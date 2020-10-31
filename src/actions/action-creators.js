@@ -13,3 +13,14 @@ export async function loadCryptoCurrency() {
     payload: result.data,
   });
 }
+
+export async function loadCryptoCoin(slug) {
+  const url = {
+    url: `https://api.coingecko.com/api/v3/coins/${slug}?tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`,
+  };
+  const coinData = await coinGeckoClient.coins.fetch({ url });
+  dispatcher.dispatch({
+    type: actionTypes.LOAD_CRYPTO_COIN,
+    payload: coinData,
+  });
+}
