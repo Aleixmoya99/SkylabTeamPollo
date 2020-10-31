@@ -3,7 +3,7 @@ import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
 let cryptoResult;
-
+let savedCrypto;
 const CHANGE = "CHANGE";
 
 export class CryptoData extends EventEmitter {
@@ -21,6 +21,21 @@ export class CryptoData extends EventEmitter {
 
   emitChange() {
     this.emit(CHANGE);
+  }
+  saveCrypto(data) {
+    var flag = 0;
+    if (!savedCrypto) {
+      savedCrypto = [];
+    }
+    savedCrypto.forEach((element) => {
+      if (element === data) {
+        flag = 1;
+      }
+    });
+    if (flag === 0) {
+      savedCrypto.push(data);
+    }
+    console.log(savedCrypto);
   }
 }
 
