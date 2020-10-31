@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import CryptoStore from "../../stores/crypto-store";
-import { loadCryptoCurrency } from "../../actions/action-creators";
+import cryptoStore from "../../stores/crypto-store";
+import { loadCoinsMarkets } from "../../actions/action-creators";
 
 function CryptoList() {
-  const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
+  const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
   function handleChange() {
-    setCryptoList(CryptoStore.getCryptoList());
+    setCryptoList(cryptoStore.getCryptoList());
   }
 
   useEffect(() => {
-    CryptoStore.addEventListener(handleChange);
+    cryptoStore.addEventListener(handleChange);
     if (!cryptoList) {
-      loadCryptoCurrency();
+      loadCoinsMarkets();
     }
     return () => {
-      CryptoStore.removeEventListener(handleChange);
+      cryptoStore.removeEventListener(handleChange);
     };
   }, [cryptoList]);
 
@@ -25,7 +25,7 @@ function CryptoList() {
         {cryptoList ? (
           cryptoList.map((data) => (
             <li key={data.symbol}>
-              <img src={data.image} />
+              <img src={data.image} alt="crypto_logo" />
               {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
               <button>Save</button>
             </li>
