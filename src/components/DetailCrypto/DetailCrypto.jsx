@@ -43,6 +43,18 @@ function CryptoDetail() {
               %)
             </span>
           </div>
+          <div>
+            <ul>
+              <li>Rank {cryptoCoin.data.coingecko_rank}</li>
+              <li>
+                <a href={cryptoCoin.data.links.homepage[0]}>Home Page</a>
+              </li>
+              <li>Change in 24H</li>
+              <li>Change in 30D</li>
+              <li>Change in 1Y</li>
+              <li></li>
+            </ul>
+          </div>
         </section>
       ) : (
         <div>Loading...</div>
