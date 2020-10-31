@@ -1,0 +1,11 @@
+.navbar__mobile {
+  height: 80px;
+  background-color: #2c2443;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+}
