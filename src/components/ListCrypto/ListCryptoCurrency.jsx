@@ -19,10 +19,22 @@ function CryptoList() {
   }, [cryptoList]);
 
   return (
-    <div>
-      Hola Golberti
-      {cryptoList ? cryptoList.map((data) => data.id) : <div>LOADING....</div>}
-    </div>
+    <>
+      <h1>Hola Golberti</h1>
+      <ul>
+        {cryptoList ? (
+          cryptoList.map((data) => (
+            <li key={data.symbol}>
+              <img src={data.image} />
+              {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
+              <button>Save</button>
+            </li>
+          ))
+        ) : (
+          <li>LOADING....</li>
+        )}
+      </ul>
+    </>
   );
 }
 
