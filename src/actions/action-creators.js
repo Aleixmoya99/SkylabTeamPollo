@@ -38,6 +38,8 @@ export async function loadCoinByID(coinId) {
     sparkline: false,
   };
   const coinById = await coinGeckoClient.coins.fetch(coinId, { ...params });
+  console.log(coinById);
+  console.log(typeof coinById.data.market_data.price_change_percentage_24h);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
     payload: coinById,
