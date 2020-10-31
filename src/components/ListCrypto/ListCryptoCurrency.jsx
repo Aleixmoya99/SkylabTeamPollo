@@ -4,7 +4,6 @@ import { loadCryptoCurrency } from "../../actions/action-creators";
 
 function CryptoList() {
   const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
-  console.log(cryptoList);
   function handleChange() {
     setCryptoList(CryptoStore.getCryptoList());
   }
