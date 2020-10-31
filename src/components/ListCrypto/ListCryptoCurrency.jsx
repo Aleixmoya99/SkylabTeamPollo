@@ -25,13 +25,15 @@ function CryptoList() {
       <ul>
         {cryptoList ? (
           cryptoList.map((data) => (
-            <li key={data.id}>
+            <>
               <Link to={`/${data.id}`}>
-                <img src={data.image} />
-                {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
+                <li key={data.id}>
+                  <img src={data.image} />
+                  {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
+                </li>
               </Link>
               <button>Save</button>
-            </li>
+            </>
           ))
         ) : (
           <li>LOADING....</li>
