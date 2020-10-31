@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CryptoStore from "../../stores/crypto-store";
 import { loadCryptoCurrency } from "../../actions/action-creators";
+import { Link } from "react-router-dom";
 
 function CryptoList() {
   const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
@@ -24,9 +25,11 @@ function CryptoList() {
       <ul>
         {cryptoList ? (
           cryptoList.map((data) => (
-            <li key={data.symbol}>
-              <img src={data.image} />
-              {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
+            <li key={data.id}>
+              <Link to={`/${data.id}`}>
+                <img src={data.image} />
+                {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
+              </Link>
               <button>Save</button>
             </li>
           ))
