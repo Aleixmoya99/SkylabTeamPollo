@@ -12,7 +12,6 @@ export async function loadCoinsMarkets() {
     vs_currency: "eur",
   };
   const coinMarkets = await coinGeckoClient.coins.markets({ ...params });
-  console.log(coinMarkets.data);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
     payload: coinMarkets.data,
@@ -23,7 +22,6 @@ export async function loadCoinsList() {
   //Return and array with all existing Coins
   //Data: ids/names/symbol
   const coinList = await coinGeckoClient.coins.list();
-  console.log(coinList);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_LIST,
     payload: coinList,
@@ -40,7 +38,6 @@ export async function loadCoinByID(coinId) {
     sparkline: false,
   };
   const coinById = await coinGeckoClient.coins.fetch(coinId, { ...params });
-  console.log(coinById);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
     payload: coinById,
@@ -58,7 +55,6 @@ export async function updateCoinById(coinId) {
       ...params,
     }
   );
-  console.log(updateCoinById);
   dispatcher.dispatch({
     type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
     payload: updateCoinById,
