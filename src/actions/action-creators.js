@@ -8,9 +8,8 @@ export async function loadCryptoCurrency() {
     order: CoinGecko.ORDER.MARKET_CAP_DESC,
   };
   const result = await coinGeckoClient.coins.markets({ params });
-
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_CURRENCY,
-    payload: result,
+    payload: result.data,
   });
 }

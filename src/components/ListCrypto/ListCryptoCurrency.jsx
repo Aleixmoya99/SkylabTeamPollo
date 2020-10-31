@@ -4,6 +4,10 @@ import { loadCryptoCurrency } from "../../actions/action-creators";
 
 function CryptoList() {
   const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
+  console.log(cryptoList);
+  function handleChange() {
+    setCryptoList(CryptoStore.getCryptoList());
+  }
 
   useEffect(() => {
     CryptoStore.addEventListener(handleChange);
@@ -15,11 +19,12 @@ function CryptoList() {
     };
   }, [cryptoList]);
 
-  function handleChange() {
-    setCryptoList(CryptoStore.getCryptoList());
-  }
-
-  return <div>{cryptoList}</div>;
+  return (
+    <div>
+      Hola Golberti
+      {cryptoList ? cryptoList.map((data) => data.id) : <div>LOADING....</div>}
+    </div>
+  );
 }
 
 export default CryptoList;

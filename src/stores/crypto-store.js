@@ -2,23 +2,25 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
-let cryptoResult = [];
+let cryptoResult;
+
+const CHANGE = "CHANGE";
 
 export class CryptoData extends EventEmitter {
-  getCrytoList() {
+  getCryptoList() {
     return cryptoResult;
   }
 
   addEventListener(callback) {
-    this.on("CHANGE", callback);
+    this.on(CHANGE, callback);
   }
 
   removeEventListener(callback) {
-    this.removeEventListener("CHANGE", callback);
+    this.removeListener(CHANGE, callback);
   }
 
   emitChange() {
-    this.emit("CHANGE");
+    this.emit(CHANGE);
   }
 }
 
@@ -35,3 +37,5 @@ dispatcher.register((actions) => {
       break;
   }
 });
+
+export default cryptoData;
