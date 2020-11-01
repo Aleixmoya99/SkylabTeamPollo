@@ -3,12 +3,12 @@ import "./NavCrypto.css";
 
 function NavCrypto() {
   return (
-    <nav class="header">
-      <ul class="nav">
-        <li class="desktop">
+    <nav className="header">
+      <ul className="nav">
+        <li className="desktop">
           <a href="*">Cryptocurrecies</a>
         </li>
-        <li class="desktop">
+        <li className="desktop">
           <a href="*">Products</a>
           <ul>
             <li>
@@ -25,7 +25,7 @@ function NavCrypto() {
             </li>
           </ul>
         </li>
-        <li class="desktop">
+        <li className="desktop">
           <a href="*">Learn</a>
           <ul>
             <li>
@@ -52,7 +52,6 @@ function NavCrypto() {
           <a href="*">Log In</a>
         </li>
       </ul>
-     
     </nav>
   );
 }
