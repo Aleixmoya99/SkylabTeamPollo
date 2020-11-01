@@ -12,7 +12,7 @@ function CryptoDetail() {
   useEffect(() => {
     CryptoStore.addEventListener(handleChange);
     if (!cryptoCoin) {
-      loadCoinByID("ethereum");
+      loadCoinByID("bitcoin");
     }
     return () => {
       CryptoStore.removeEventListener(handleChange);
