@@ -4,6 +4,7 @@ import { loadCoinByID } from "../../actions/action-creators";
 
 function CryptoDetail() {
   const [cryptoCoin, setCryptCoin] = useState(null);
+  let description;
 
   function handleChange() {
     setCryptCoin(CryptoStore.getCryptoCoin());
@@ -26,6 +27,7 @@ function CryptoDetail() {
           <figure>
             <img src={cryptoCoin.data.image.small} alt="crypto__logo" />
             <figcaption>{cryptoCoin.data.name}</figcaption>
+            <span>{cryptoCoin.data.symbol}</span>
           </figure>
           <div>
             <span>
@@ -52,9 +54,14 @@ function CryptoDetail() {
               <li>Change in 24H</li>
               <li>Change in 30D</li>
               <li>Change in 1Y</li>
-              <li></li>
+              <li>Social Media</li>
+              <li>Codigo fuente</li>
+              <li>max_supply</li>
+              <li>circulating_supply</li>
             </ul>
           </div>
+
+          <div className="description"></div>
         </section>
       ) : (
         <div>Loading...</div>
