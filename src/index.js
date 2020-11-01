@@ -6,7 +6,6 @@ import "./styles/index.css";
 import NavCrypto from "./components/NavCrypto/NavCrypto";
 import ListCrypto from "./components/ListCrypto/ListCryptoCurrency";
 import DetailCrypto from "./components/DetailCrypto/DetailCrypto";
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

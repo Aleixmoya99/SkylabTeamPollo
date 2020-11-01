@@ -26,6 +26,7 @@ function CryptoDetail() {
           <figure>
             <img src={cryptoCoin.data.image.small} alt="crypto__logo" />
             <figcaption>{cryptoCoin.data.name}</figcaption>
+            <span>{cryptoCoin.data.symbol}</span>
           </figure>
           <div>
             <span>
@@ -52,9 +53,19 @@ function CryptoDetail() {
               <li>Change in 24H</li>
               <li>Change in 30D</li>
               <li>Change in 1Y</li>
-              <li></li>
+              <li>Social Media</li>
+              <li>Codigo fuente</li>
+              <li>
+                max_supply {cryptoCoin.data.market_data.total_supply} coins
+              </li>
+              <li>
+                circulating_supply{" "}
+                {cryptoCoin.data.market_data.circulating_supply} coins
+              </li>
             </ul>
           </div>
+
+          <div className="description">{cryptoCoin.data.description.en}</div>
         </section>
       ) : (
         <div>Loading...</div>

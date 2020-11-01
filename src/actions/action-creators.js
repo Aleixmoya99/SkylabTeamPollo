@@ -4,7 +4,7 @@ import CoinGecko from "coingecko-api";
 const coinGeckoClient = new CoinGecko();
 
 export async function loadCoinsAll(show = 25, curPage = 0) {
-  //Return array with 25 coins global informatio
+  //Return array with 25 coins global information
   // including market info
   const params = {
     order: CoinGecko.ORDER.GECKO_DESC,
@@ -74,5 +74,21 @@ export async function updateCoinById(coinId) {
   dispatcher.dispatch({
     type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
     payload: updateCoinById,
+  });
+}
+
+export async function loadDerivativesList(show = 25, page = 0) {
+  //Return an array with all derivatives exchanges
+  const params = {
+    order: CoinGecko.ORDER.GECKO_DESC,
+    per_page: show,
+    page: page,
+  };
+  const derivativesList = await coinGeckoClient.derivatives.allExchanges({
+    ...params,
+  });
+  dispatcher.dispatch({
+    type: actionTypes.LOAD_DERIVATIVES_LIST,
+    payload: derivativesList,
   });
 }
