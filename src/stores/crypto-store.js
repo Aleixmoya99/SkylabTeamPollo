@@ -1,13 +1,19 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
-let cryptoResult;
+
 let savedCrypto;
+let cryptoMarkets;
+let cryptoCoins;
+
 const CHANGE = "CHANGE";
 
 export class CryptoData extends EventEmitter {
   getCryptoList() {
-    return cryptoResult;
+    return cryptoMarkets;
+  }
+  getCryptoCoin() {
+    return cryptoCoins;
   }
   getSavedCrypto() {
     return savedCrypto;
@@ -41,14 +47,16 @@ export class CryptoData extends EventEmitter {
 }
 
 const cryptoData = new CryptoData();
-
-dispatcher.register((actions) => {
-  switch (actions.type) {
-    case actionTypes.LOAD_CRYPTO_CURRENCY:
-      cryptoResult = actions.payload;
+dispatcher.register((action) => {
+  switch (action.type) {
+    case actionTypes.LOAD_CRYPTO_MARKETS_LIST:
+      cryptoMarkets = action.payload;
       cryptoData.emitChange();
       break;
-
+    case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
+      cryptoCoins = action.payload;
+      cryptoData.emitChange();
+      break;
     default:
       break;
   }

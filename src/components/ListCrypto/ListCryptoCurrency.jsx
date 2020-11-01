@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import CryptoStore from "../../stores/crypto-store";
-import { loadCryptoCurrency } from "../../actions/action-creators";
+import cryptoStore from "../../stores/crypto-store";
+import { loadCoinsMarkets } from "../../actions/action-creators";
 import { Link } from "react-router-dom";
 var e, selector;
 function CryptoList() {
-  const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
+  const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
   const [savedCryptoList, setSavedCryptoList] = useState(
-    CryptoStore.getSavedCrypto()
+    cryptoStore.getSavedCrypto()
   );
   function handleChange() {
-    setCryptoList(CryptoStore.getCryptoList());
-    setSavedCryptoList(CryptoStore.getSavedCrypto());
+    setCryptoList(cryptoStore.getCryptoList());
+    setSavedCryptoList(cryptoStore.getSavedCrypto());
   }
 
   useEffect(() => {
-    CryptoStore.addEventListener(handleChange);
+    cryptoStore.addEventListener(handleChange);
     if (!cryptoList) {
-      loadCryptoCurrency();
+      loadCoinsMarkets();
     }
     return () => {
-      CryptoStore.removeEventListener(handleChange);
+      cryptoStore.removeEventListener(handleChange);
     };
   }, [cryptoList]);
 
@@ -64,7 +64,7 @@ function CryptoList() {
               </Link>
               <button
                 type="button"
-                onClick={() => CryptoStore.saveCrypto(data)}
+                onClick={() => cryptoStore.saveCrypto(data)}
               >
                 Save
               </button>
@@ -91,7 +91,7 @@ function CryptoList() {
               </Link>
               <button
                 type="button"
-                onClick={() => CryptoStore.saveCrypto(data)}
+                onClick={() => cryptoStore.saveCrypto(data)}
               >
                 Save
               </button>
