@@ -62,3 +62,20 @@ export async function updateCoinById(coinId) {
     payload: updateCoinById,
   });
 }
+
+export async function updateCoinById(coinId) {
+  //Get status updates for a given coin.
+  const params = {
+    per_page: 5,
+  };
+  const updateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
+    coinId,
+    {
+      ...params,
+    }
+  );
+  dispatcher.dispatch({
+    type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
+    payload: updateCoinById,
+  });
+}
