@@ -2,6 +2,7 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
+let savedCrypto;
 let cryptoMarkets;
 let cryptoCoins;
 
@@ -14,6 +15,9 @@ export class CryptoData extends EventEmitter {
   getCryptoCoin() {
     return cryptoCoins;
   }
+  getSavedCrypto() {
+    return savedCrypto;
+  }
 
   addEventListener(callback) {
     this.on(CHANGE, callback);
@@ -25,6 +29,20 @@ export class CryptoData extends EventEmitter {
 
   emitChange() {
     this.emit(CHANGE);
+  }
+  saveCrypto(data) {
+    var flag = 0;
+    if (!savedCrypto) {
+      savedCrypto = [];
+    }
+    savedCrypto.forEach((element) => {
+      if (element === data) {
+        flag = 1;
+      }
+    });
+    if (flag === 0) {
+      savedCrypto.push(data);
+    }
   }
 }
 
