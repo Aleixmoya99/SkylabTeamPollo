@@ -3,11 +3,12 @@ import actionTypes from "./action-types";
 import CoinGecko from "coingecko-api";
 const coinGeckoClient = new CoinGecko();
 
-export async function loadCoinsMarkets() {
+export async function loadCoinsMarkets(show = 25, page = 0) {
   //Return an array with 25 coins market data (price, market cap, volume).
   const params = {
     order: CoinGecko.ORDER.GECKO_DESC,
-    per_page: 25,
+    per_page: show,
+    page: page,
     localization: false,
     vs_currency: "eur",
   };
