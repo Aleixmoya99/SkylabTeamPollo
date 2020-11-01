@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import ListCrypto from "./components/ListCrypto/ListCryptoCurrency";
-import DetailCrypto from "./components/DetailCrypto/DetailCrypto";
+import Main from "./components/Main/Main";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DetailCrypto />
+    <Main />
   </React.StrictMode>,
   document.getElementById("root")
 );

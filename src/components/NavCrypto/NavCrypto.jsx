@@ -33,6 +33,4 @@ function NavCrypto() {
 }
 
 
-
-
 export default NavCrypto
