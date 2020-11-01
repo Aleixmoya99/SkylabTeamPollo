@@ -4,7 +4,6 @@ import { loadCoinByID } from "../../actions/action-creators";
 
 function CryptoDetail() {
   const [cryptoCoin, setCryptCoin] = useState(null);
-  let description;
 
   function handleChange() {
     setCryptCoin(CryptoStore.getCryptoCoin());
@@ -13,7 +12,7 @@ function CryptoDetail() {
   useEffect(() => {
     CryptoStore.addEventListener(handleChange);
     if (!cryptoCoin) {
-      loadCoinByID("bitcoin");
+      loadCoinByID("ethereum");
     }
     return () => {
       CryptoStore.removeEventListener(handleChange);
@@ -56,12 +55,17 @@ function CryptoDetail() {
               <li>Change in 1Y</li>
               <li>Social Media</li>
               <li>Codigo fuente</li>
-              <li>max_supply</li>
-              <li>circulating_supply</li>
+              <li>
+                max_supply {cryptoCoin.data.market_data.total_supply} coins
+              </li>
+              <li>
+                circulating_supply{" "}
+                {cryptoCoin.data.market_data.circulating_supply} coins
+              </li>
             </ul>
           </div>
 
-          <div className="description"></div>
+          <div className="description">{cryptoCoin.data.description.en}</div>
         </section>
       ) : (
         <div>Loading...</div>
