@@ -64,7 +64,7 @@ export async function updateCoinById(coinId) {
 }
 
 export async function loadDerivativesList(show = 25, page = 0) {
-  //Get status updates for a given coin.
+  //Return an array with all derivatives exchanges
   const params = {
     order: CoinGecko.ORDER.GECKO_DESC,
     per_page: show,
