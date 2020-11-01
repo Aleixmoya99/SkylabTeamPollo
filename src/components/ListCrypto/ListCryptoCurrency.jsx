@@ -25,7 +25,7 @@ function CryptoList() {
 
   return (
     <>
-      <h1>Hola Golberti</h1>
+      <h1>Hola Gilberto</h1>
       <select id="Filter">
         <option id="op1" value="1" text="noFilter" selected="selected">
           None
@@ -58,7 +58,7 @@ function CryptoList() {
             <>
               <Link to={`/${data.id}`}>
                 <li key={data.id}>
-                  <img src={data.image} />
+                  <img src={data.image} alt="logo" />
                   {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
                 </li>
               </Link>
@@ -85,7 +85,7 @@ function CryptoList() {
             <>
               <Link to={`/${data.id}`}>
                 <li key={data.id}>
-                  <img src={data.image} />
+                  <img src={data.image} alt="logo" />
                   {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
                 </li>
               </Link>
