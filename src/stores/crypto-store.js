@@ -5,6 +5,7 @@ import actionTypes from "../actions/action-types";
 let savedCrypto;
 let cryptoMarkets;
 let cryptoCoins;
+let cryptoDerivatives;
 
 const CHANGE = "CHANGE";
 
@@ -17,6 +18,9 @@ export class CryptoData extends EventEmitter {
   }
   getSavedCrypto() {
     return savedCrypto;
+  }
+  getCryptoDerivatives() {
+    return cryptoDerivatives;
   }
 
   addEventListener(callback) {
@@ -55,6 +59,10 @@ dispatcher.register((action) => {
       break;
     case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
       cryptoCoins = action.payload;
+      cryptoData.emitChange();
+      break;
+    case actionTypes.LOAD_DERIVATIVES_LIST:
+      cryptoDerivatives = action.payload;
       cryptoData.emitChange();
       break;
     default:
