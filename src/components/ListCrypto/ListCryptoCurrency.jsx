@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import CryptoStore from "../../stores/crypto-store";
-import { loadCryptoCurrency } from "../../actions/action-creators";
+import { loadCryptoCurrency, changeList } from "../../actions/action-creators";
 import { Link } from "react-router-dom";
-var e, selector;
 function CryptoList() {
   const [cryptoList, setCryptoList] = useState(CryptoStore.getCryptoList());
-  const [savedCryptoList, setSavedCryptoList] = useState(
-    CryptoStore.getSavedCrypto()
-  );
+
   function handleChange() {
     setCryptoList(CryptoStore.getCryptoList());
-    setSavedCryptoList(CryptoStore.getSavedCrypto());
   }
-
   useEffect(() => {
     CryptoStore.addEventListener(handleChange);
+
     if (!cryptoList) {
       loadCryptoCurrency();
     }
@@ -36,56 +32,18 @@ function CryptoList() {
       </select>
       <button
         onClick={() => {
-          e = document.getElementById("Filter").value;
-          if (e === "1") {
-            selector = true;
-          } else {
-            selector = false;
-          }
-          return selector;
+          changeList();
         }}
       >
         Apply
       </button>
-      <ul
-        class="Menu"
-        style={{
-          display: selector ? "block" : "none",
-        }}
-      >
+      <ul class="Menu">
         {cryptoList ? (
           cryptoList.map((data) => (
             <>
               <Link to={`/${data.id}`}>
                 <li key={data.id}>
-                  <img src={data.image} />
-                  {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
-                </li>
-              </Link>
-              <button
-                type="button"
-                onClick={() => CryptoStore.saveCrypto(data)}
-              >
-                Save
-              </button>
-            </>
-          ))
-        ) : (
-          <li>LOADING....</li>
-        )}
-      </ul>
-      <ul
-        class="saveMenu"
-        style={{
-          display: !selector ? "none" : "block",
-        }}
-      >
-        {savedCryptoList ? (
-          savedCryptoList.map((data) => (
-            <>
-              <Link to={`/${data.id}`}>
-                <li key={data.id}>
-                  <img src={data.image} />
+                  <img src={data.image} alt="imagen" />
                   {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
                 </li>
               </Link>

@@ -13,3 +13,8 @@ export async function loadCryptoCurrency() {
     payload: result.data,
   });
 }
+export async function changeList() {
+  dispatcher.dispatch({
+    type: actionTypes.CHANGE_LIST,
+  });
+}

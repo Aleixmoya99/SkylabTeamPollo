@@ -48,7 +48,10 @@ dispatcher.register((actions) => {
       cryptoResult = actions.payload;
       cryptoData.emitChange();
       break;
-
+    case actionTypes.CHANGE_LIST:
+      cryptoResult = savedCrypto;
+      cryptoData.emitChange();
+      break;
     default:
       break;
   }
