@@ -1,7 +1,6 @@
 import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
-
 let cryptoResult;
 let savedCrypto;
 const CHANGE = "CHANGE";
@@ -9,6 +8,9 @@ const CHANGE = "CHANGE";
 export class CryptoData extends EventEmitter {
   getCryptoList() {
     return cryptoResult;
+  }
+  getSavedCrypto() {
+    return savedCrypto;
   }
 
   addEventListener(callback) {
@@ -35,7 +37,6 @@ export class CryptoData extends EventEmitter {
     if (flag === 0) {
       savedCrypto.push(data);
     }
-    console.log(savedCrypto);
   }
 }
 
