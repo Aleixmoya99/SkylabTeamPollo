@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import cryptoStore from "../../stores/crypto-store";
-import { loadCoinsMarkets } from "../../actions/action-creators";
+import {
+  loadCoinsMarkets,
+  loadDerivativesList,
+} from "../../actions/action-creators";
 import { Link } from "react-router-dom";
 var e, selector;
 function CryptoList() {
@@ -17,6 +20,7 @@ function CryptoList() {
     cryptoStore.addEventListener(handleChange);
     if (!cryptoList) {
       loadCoinsMarkets();
+      loadDerivativesList();
     }
     return () => {
       cryptoStore.removeEventListener(handleChange);

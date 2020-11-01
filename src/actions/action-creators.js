@@ -63,19 +63,19 @@ export async function updateCoinById(coinId) {
   });
 }
 
-export async function updateCoinById(coinId) {
+export async function loadDerivativesList(show = 25, page = 0) {
   //Get status updates for a given coin.
   const params = {
-    per_page: 5,
+    order: CoinGecko.ORDER.GECKO_DESC,
+    per_page: show,
+    page: page,
   };
-  const updateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
-    coinId,
-    {
-      ...params,
-    }
-  );
+  const derivativesList = await coinGeckoClient.derivatives.allExchanges({
+    ...params,
+  });
+  console.log(derivativesList);
   dispatcher.dispatch({
-    type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
-    payload: updateCoinById,
+    type: actionTypes.LOAD_DERIVATIVES_LIST,
+    payload: derivativesList,
   });
 }
