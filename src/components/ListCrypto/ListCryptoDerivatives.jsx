@@ -31,18 +31,31 @@ function ListCryptoDerivatives() {
                 <div>
                     <ul className="derivativesList">Derivatives
                         {derivativesList ? 
-                            ( derivativesList.data.map((data) => (
-                            <>
+                            ( derivativesList.data.map((data) => {
+                                let yearEstablished;
+                                
+                                if(data.year_established !== null) {
+                                    yearEstablished = data.year_established; 
+                                }
+                                else {
+                                    yearEstablished = 'N/A'; 
+
+                                }
+                                
+                             return<>   
                                 <li key={data.id}>
                                     <img alt="lala" src={data.image}/>
                                     {`${data.name} 
                                     Number of Perpetual Pairs: ${data.number_of_perpetual_pairs} 
                                     Futures Pairs: ${data.number_of_futures_pairs} 
                                     Website: ` } {<a href={data.url}>{data.name}</a>} 
+                                    {yearEstablished}
+                                    
                                     
                                 </li>
+                                
                             </>    
-                            ))
+                            })
                             ) : <li>Loading</li>}
                     </ul>
                 </div>
@@ -57,7 +70,7 @@ function ListCryptoDerivatives() {
 }
 
 /*
-<ul>Year Established:
+<ul>
                         {derivativesList ? 
                             ( derivativesList.data.map((data) => {
                             
