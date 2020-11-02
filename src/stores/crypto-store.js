@@ -12,7 +12,9 @@ export class CryptoData extends EventEmitter {
   getSavedCrypto() {
     return savedCrypto;
   }
-
+  getErrorNoCurrency() {
+    return "No Currency";
+  }
   addEventListener(callback) {
     this.on(CHANGE, callback);
   }
@@ -30,13 +32,14 @@ export class CryptoData extends EventEmitter {
       savedCrypto = [];
     }
     savedCrypto.forEach((element) => {
-      if (element === data) {
+      if (element.id === data.id) {
         flag = 1;
       }
     });
     if (flag === 0) {
       savedCrypto.push(data);
     }
+    console.log(savedCrypto);
   }
 }
 

@@ -22,21 +22,22 @@ function CryptoList() {
   return (
     <>
       <h1>Hola Golberti</h1>
-      <select id="Filter">
-        <option id="op1" value="1" text="noFilter" selected="selected">
-          None
-        </option>
-        <option id="op2" value="2" text="savedFilter">
-          Saved
-        </option>
-      </select>
-      <button
+      Check:
+      <input
+        type="checkBox"
+        id="thisCheckBox"
         onClick={() => {
-          changeList();
+          if (document.getElementById("thisCheckBox").checked) {
+            if (CryptoStore.getSavedCrypto()) {
+              changeList();
+            } else {
+              console.log("Aeterna Vitrix");
+            }
+          } else {
+            loadCryptoCurrency();
+          }
         }}
-      >
-        Apply
-      </button>
+      />
       <ul class="Menu">
         {cryptoList ? (
           cryptoList.map((data) => (
