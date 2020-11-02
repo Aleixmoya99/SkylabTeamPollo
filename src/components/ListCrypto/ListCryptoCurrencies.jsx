@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cryptoStore from "../../stores/crypto-store";
 import { loadCoinsMarkets, changeList } from "../../actions/action-creators";
 import { Link } from "react-router-dom";
-function CryptoList() {
+function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
 
   function handleChange() {
@@ -63,4 +63,4 @@ function CryptoList() {
   );
 }
 
-export default CryptoList;
+export default ListCryptoCurrencies;

@@ -65,7 +65,7 @@ export async function updateCoinById(coinId) {
   const params = {
     per_page: 5,
   };
-  const updateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
+  const currentUpdateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
     coinId,
     {
       ...params,
@@ -73,7 +73,7 @@ export async function updateCoinById(coinId) {
   );
   dispatcher.dispatch({
     type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
-    payload: updateCoinById,
+    payload: currentUpdateCoinById,
   });
 }
 
@@ -93,6 +93,7 @@ export async function loadDerivativesList(show = 25, page = 0) {
     payload: derivativesList,
   });
 }
+
 export async function changeList() {
   dispatcher.dispatch({
     type: actionTypes.CHANGE_LIST,
