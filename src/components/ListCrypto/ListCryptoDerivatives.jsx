@@ -39,6 +39,7 @@ function ListCryptoDerivatives() {
                                     Number of Perpetual Pairs: ${data.number_of_perpetual_pairs} 
                                     Futures Pairs: ${data.number_of_futures_pairs} 
                                     Website: ` } {<a href={data.url}>{data.name}</a>} 
+                                    
                                 </li>
                             </>    
                             ))
