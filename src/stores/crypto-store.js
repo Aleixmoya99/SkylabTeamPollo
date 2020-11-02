@@ -10,14 +10,26 @@ export class CryptoData extends EventEmitter {
   getCryptoList() {
     return cryptoMarkets;
   }
+  setCryptoList(param) {
+    cryptoMarkets = param;
+  }
   getCryptoCoin() {
     return cryptoCoins;
+  }
+  setCryptoCoin(param) {
+    cryptoCoins = param;
   }
   getSavedCrypto() {
     return savedCrypto;
   }
+  setSavedCrypto(param) {
+    savedCrypto = param;
+  }
   getCryptoDerivatives() {
     return cryptoDerivatives;
+  }
+  setCryptoDerivatives(param) {
+    cryptoDerivatives = param;
   }
   addEventListener(callback) {
     this.on(CHANGE, callback);
@@ -31,26 +43,25 @@ export class CryptoData extends EventEmitter {
     this.emit(CHANGE);
   }
   saveCrypto(data) {
-    var flag = 0;
-    if (!savedCrypto) {
-      savedCrypto = [];
-    }
+    let flag = 0;
+    !savedCrypto && (savedCrypto = []);
     savedCrypto.forEach((element) => {
-      if (element.id === data.id) {
-        flag = 1;
-      }
+      element.id === data.id && (flag = 1);
     });
-    if (flag === 0) {
-      savedCrypto.push(data);
-    }
-    console.log(savedCrypto);
+    flag === 0 && savedCrypto.push(data);
+  }
+  getFavoritesCryptos() {
+    return savedCrypto;
+  }
+  setFavoritesCryptos(params) {
+    savedCrypto = params;
   }
 }
 
 const cryptoData = new CryptoData();
 dispatcher.register((action) => {
   switch (action.type) {
-    case actionTypes.LOAD_CRYPTO_MARKETS_LIST:
+    case actionTypes.LOAD_CRYPTO_COIN_LIST:
       cryptoMarkets = action.payload;
       cryptoData.emitChange();
       break;

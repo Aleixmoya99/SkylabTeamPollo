@@ -1,6 +1,7 @@
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "./action-types";
 import CoinGecko from "coingecko-api";
+
 const coinGeckoClient = new CoinGecko();
 
 export async function loadCoinsAll(show = 25, curPage = 0) {
@@ -13,7 +14,11 @@ export async function loadCoinsAll(show = 25, curPage = 0) {
   };
 
   const coinAll = await coinGeckoClient.coins.all({ ...params });
-  console.log(coinAll);
+
+  dispatcher.dispatch({
+    type: actionTypes.LOAD_CRYPTO_COIN_LIST,
+    payload: coinAll.data,
+  });
 }
 
 export async function loadCoinsMarkets(show = 25, curPage = 0) {
@@ -25,6 +30,7 @@ export async function loadCoinsMarkets(show = 25, curPage = 0) {
     localization: false,
     vs_currency: "eur",
   };
+
   const coinMarkets = await coinGeckoClient.coins.markets({ ...params });
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
