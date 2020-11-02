@@ -2,10 +2,7 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
-let savedCrypto;
-let cryptoMarkets;
-let cryptoCoins;
-let cryptoDerivatives;
+let savedCrypto, cryptoMarkets, cryptoCoins, cryptoDerivatives;
 
 const CHANGE = "CHANGE";
 
@@ -23,6 +20,9 @@ export class CryptoData extends EventEmitter {
     return cryptoDerivatives;
   }
 
+  getErrorNoCurrency() {
+    return "No Currency";
+  }
   addEventListener(callback) {
     this.on(CHANGE, callback);
   }
@@ -40,13 +40,14 @@ export class CryptoData extends EventEmitter {
       savedCrypto = [];
     }
     savedCrypto.forEach((element) => {
-      if (element === data) {
+      if (element.id === data.id) {
         flag = 1;
       }
     });
     if (flag === 0) {
       savedCrypto.push(data);
     }
+    console.log(savedCrypto);
   }
 }
 
@@ -63,6 +64,10 @@ dispatcher.register((action) => {
       break;
     case actionTypes.LOAD_DERIVATIVES_LIST:
       cryptoDerivatives = action.payload;
+      cryptoData.emitChange();
+      break;
+    case actionTypes.CHANGE_LIST:
+      cryptoMarkets = savedCrypto;
       cryptoData.emitChange();
       break;
     default:
