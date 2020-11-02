@@ -31,7 +31,8 @@ function CryptoList() {
             if (CryptoStore.getSavedCrypto()) {
               changeList();
             } else {
-              console.log("Aeterna Vitrix");
+              
+              //code goes here
             }
           } else {
             loadCryptoCurrency();
