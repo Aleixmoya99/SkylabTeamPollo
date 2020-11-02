@@ -26,7 +26,6 @@ export async function loadCoinsMarkets(show = 25, curPage = 0) {
     vs_currency: "eur",
   };
   const coinMarkets = await coinGeckoClient.coins.markets({ ...params });
-  console.log(coinMarkets);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
     payload: coinMarkets.data,
@@ -97,5 +96,10 @@ export async function loadDerivativesList(show = 25, page = 0) {
 export async function changeList() {
   dispatcher.dispatch({
     type: actionTypes.CHANGE_LIST,
+  });
+}
+export async function errorNoSavedCurrency() {
+  dispatcher.dispatch({
+    type: actionTypes.ERROR_NO_SAVEDCURRENCY,
   });
 }
