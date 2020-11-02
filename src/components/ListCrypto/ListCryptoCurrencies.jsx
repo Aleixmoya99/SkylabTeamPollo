@@ -4,6 +4,7 @@ import {
   loadCoinsMarkets,
   changeList,
   errorNoSavedCurrency,
+  loadCoinsAll,
 } from "../../actions/action-creators";
 import { Link } from "react-router-dom";
 function ListCryptoCurrencies() {
@@ -16,6 +17,7 @@ function ListCryptoCurrencies() {
     cryptoStore.addEventListener(handleChange);
     if (!cryptoList) {
       loadCoinsMarkets();
+      loadCoinsAll();
     }
     return () => {
       cryptoStore.removeEventListener(handleChange);
@@ -24,50 +26,63 @@ function ListCryptoCurrencies() {
 
   return (
     <>
-      Check:
-      <input
-        type="checkBox"
-        id="thisCheckBox"
-        onClick={() => {
-          if (document.getElementById("thisCheckBox").checked) {
-            if (cryptoStore.getSavedCrypto()) {
-              changeList();
-            } else {
-              errorNoSavedCurrency();
-              document.getElementById("ErrorMsg").style.display = "inline";
-            }
-          } else {
-            loadCoinsMarkets();
-            document.getElementById("ErrorMsg").style.display = "none";
-          }
-        }}
-      />
-      <br />
-      <h2 id="ErrorMsg" style={{ display: "none" }}>
-        Error, no Saved Crypto
-      </h2>
-      <ul class="Menu">
-        {cryptoList ? (
-          cryptoList.map((data) => (
-            <>
-              <Link to={`/${data.id}`}>
-                <li key={data.id}>
-                  <img src={data.image} alt="logo" />
-                  {`${data.name} Current value: ${data.current_price} 24hour value change:${data.price_change_percentage_24h}`}
-                </li>
-              </Link>
-              <button
-                type="button"
-                onClick={() => cryptoStore.saveCrypto(data)}
-              >
-                Save
-              </button>
-            </>
-          ))
-        ) : (
-          <li>LOADING....</li>
-        )}
-      </ul>
+      <div class="mainList">
+        <div class="listLegend">
+          Check:
+          <input
+            type="checkBox"
+            id="thisCheckBox"
+            onClick={() => {
+              if (document.getElementById("thisCheckBox").checked) {
+                if (cryptoStore.getSavedCrypto()) {
+                  changeList();
+                } else {
+                  errorNoSavedCurrency();
+                  document.getElementById("ErrorMsg").style.display = "inline";
+                }
+              } else {
+                loadCoinsMarkets();
+                loadCoinsAll();
+                document.getElementById("ErrorMsg").style.display = "none";
+              }
+            }}
+          />
+        </div>
+        <br />
+        <h2 id="ErrorMsg" style={{ display: "none" }}>
+          Error, no Saved Crypto
+        </h2>
+        <ul class="Menu">
+          {cryptoList ? (
+            cryptoList.map((data) => (
+              <>
+                <Link to={`/${data.id}`}>
+                  <li id="coinList" key={data.id}>
+                    <img id="logo" src={data.image.small} alt="logo" />
+                    <div id="textInList">
+                      <p>{`${data.name}`}</p>
+                      <p id="textInEachComponent">
+                        {`Current value: ${data.market_data.current_price.eur}`}
+                      </p>
+                      <p id="textInEachComponent">
+                        {`24hour value change:${data.market_data.price_change_percentage_24h}`}
+                      </p>
+                    </div>
+                  </li>
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => cryptoStore.saveCrypto(data)}
+                >
+                  Save
+                </button>
+              </>
+            ))
+          ) : (
+            <li>LOADING....</li>
+          )}
+        </ul>
+      </div>
     </>
   );
 }
