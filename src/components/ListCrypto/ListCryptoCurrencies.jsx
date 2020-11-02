@@ -24,7 +24,6 @@ function ListCryptoCurrencies() {
 
   return (
     <>
-      <h1>Hola Gilberto</h1>
       Check:
       <input
         type="checkBox"
@@ -41,7 +40,7 @@ function ListCryptoCurrencies() {
           }
         }}
       />
-      <ul class="Menu">
+      <ul className="Menu">
         {cryptoList ? (
           cryptoList.map((data) => (
             <>
