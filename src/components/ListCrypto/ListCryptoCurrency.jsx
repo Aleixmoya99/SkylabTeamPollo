@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import cryptoStore from "../../stores/crypto-store";
-import { loadCoinsMarkets, changeList } from "../../actions/action-creators";
+import {
+  loadCoinsMarkets,
+  changeList,
+  errorNoSavedCurrency,
+} from "../../actions/action-creators";
 import { Link } from "react-router-dom";
 function CryptoList() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
@@ -30,7 +34,7 @@ function CryptoList() {
             if (cryptoStore.getSavedCrypto()) {
               changeList();
             } else {
-              //code goes here
+              errorNoSavedCurrency();
             }
           } else {
             loadCoinsMarkets();

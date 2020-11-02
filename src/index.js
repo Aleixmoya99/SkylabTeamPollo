@@ -12,7 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <NavCrypto />
       <Switch>
-        <Route path="/" exact component={ListCryptoDerivatives} />
+        <Route path="/l" exact component={ListCryptoDerivatives} />
         <Route path="/" exact component={ListCrypto} />
         <Route path="/detail/:cryptoId" component={DetailCrypto} />
       </Switch>

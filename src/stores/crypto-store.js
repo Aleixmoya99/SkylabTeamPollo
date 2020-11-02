@@ -19,10 +19,6 @@ export class CryptoData extends EventEmitter {
   getCryptoDerivatives() {
     return cryptoDerivatives;
   }
-
-  getErrorNoCurrency() {
-    return "No Currency";
-  }
   addEventListener(callback) {
     this.on(CHANGE, callback);
   }
@@ -68,6 +64,10 @@ dispatcher.register((action) => {
       break;
     case actionTypes.CHANGE_LIST:
       cryptoMarkets = savedCrypto;
+      cryptoData.emitChange();
+      break;
+    case actionTypes.ERROR_NO_SAVEDCURRENCY:
+      cryptoMarkets = [];
       cryptoData.emitChange();
       break;
     default:
