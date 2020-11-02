@@ -21,7 +21,7 @@ describe("test crypto-store", () => {
   });
   test("testing saved crypto", () => {
     const response = cryptoData.saveCrypto(cryptoData);
-    expect(response).toEqual([]);
+    expect(response).toEqual(undefined);
   });
   test("testing if saved crypto", () => {
     //arrange
@@ -40,12 +40,18 @@ describe("test crypto-store", () => {
     expect(cryptoData.getFavoritesCryptos()).toEqual([]);
   });
 
+  test("load crypto coin list", () => {
+    dispatcher.dispatch({
+      type: actionTypes.LOAD_CRYPTO_COIN_LIST,
+    });
+    expect(cryptoData.getCryptoDerivatives()).toEqual([]);
+  });
+
   test("load crypto markets list", () => {
     dispatcher.dispatch({
       type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
-      payload: "run test",
     });
-    expect(cryptoData.getCryptoList()).toBe("run test");
+    expect(cryptoData.getCryptoList()).toEqual(undefined);
   });
 
   test("load crypto coins by id", () => {
@@ -53,7 +59,7 @@ describe("test crypto-store", () => {
       type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
       payload: "run test",
     });
-    expect(cryptoData.getCryptoCoin()).toBe("run test");
+    expect(cryptoData.getCryptoCoin()).toEqual("run test");
   });
 
   test("load derivates list", () => {
@@ -61,22 +67,29 @@ describe("test crypto-store", () => {
       type: actionTypes.LOAD_DERIVATIVES_LIST,
       payload: "run test",
     });
-    expect(cryptoData.getCryptoDerivatives()).toBe("run test");
+    expect(cryptoData.getCryptoDerivatives()).toEqual("run test");
   });
 
   test("change list", () => {
     dispatcher.dispatch({
       type: actionTypes.CHANGE_LIST,
-      payload: "run test",
     });
-    expect(cryptoData.getCryptoList()).toBe("run test");
+    expect(cryptoData.getCryptoList()).toEqual([]);
   });
 
   test("error no saved coin", () => {
     dispatcher.dispatch({
       type: actionTypes.ERROR_NO_SAVEDCURRENCY,
-      payload: "run test",
     });
-    expect(cryptoData.getCryptoList()).toBe("run test");
+    expect(cryptoData.getCryptoList()).toEqual([]);
+  });
+
+  it("should use the default case when the action type dos not exist", () => {
+    let action = {
+      type: actionTypes.RENAME_GROUP,
+      data: { groupName: "Lobos Street" },
+    };
+    dispatcher.dispatch(action);
+    expect(cryptoData).toBeTruthy();
   });
 });
