@@ -69,31 +69,6 @@ function ListCryptoDerivatives() {
     )
 }
 
-/*
-<ul>
-                        {derivativesList ? 
-                            ( derivativesList.data.map((data) => {
-                            
-                            if(data.year_established !== null) {
-                                return <>
-                                
-                                        <li key={data.id}>
-                                            {data.year_established}
-                                        </li>
-                              </>  
-                            }else {
-                                return <li key={data.id}>--- </li>
-                                
-                            }
-                              
-                        })
-                            ) : <li>Loading</li>}
-                    </ul>
-
-
-*/
-
-
 
 
 export default ListCryptoDerivatives
