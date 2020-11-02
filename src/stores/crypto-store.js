@@ -50,7 +50,7 @@ export class CryptoData extends EventEmitter {
 const cryptoData = new CryptoData();
 dispatcher.register((action) => {
   switch (action.type) {
-    case actionTypes.LOAD_CRYPTO_MARKETS_LIST:
+    case actionTypes.LOAD_CRYPTO_COIN_LIST:
       cryptoMarkets = action.payload;
       cryptoData.emitChange();
       break;
