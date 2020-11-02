@@ -26,7 +26,6 @@ export async function loadCoinsMarkets(show = 25, curPage = 0) {
     vs_currency: "eur",
   };
   const coinMarkets = await coinGeckoClient.coins.markets({ ...params });
-  console.log(coinMarkets);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
     payload: coinMarkets.data,
@@ -65,7 +64,7 @@ export async function updateCoinById(coinId) {
   const params = {
     per_page: 5,
   };
-  const updateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
+  const currentUpdateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
     coinId,
     {
       ...params,
@@ -73,7 +72,7 @@ export async function updateCoinById(coinId) {
   );
   dispatcher.dispatch({
     type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
-    payload: updateCoinById,
+    payload: currentUpdateCoinById,
   });
 }
 
@@ -93,8 +92,14 @@ export async function loadDerivativesList(show = 25, page = 0) {
     payload: derivativesList,
   });
 }
+
 export async function changeList() {
   dispatcher.dispatch({
     type: actionTypes.CHANGE_LIST,
+  });
+}
+export async function errorNoSavedCurrency() {
+  dispatcher.dispatch({
+    type: actionTypes.ERROR_NO_SAVEDCURRENCY,
   });
 }

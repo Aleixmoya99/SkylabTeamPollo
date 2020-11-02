@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CryptoStore from "../../stores/crypto-store";
 import { loadCoinByID } from "../../actions/action-creators";
 
-function CryptoDetail() {
+function DetailCrypto() {
   const [cryptoCoin, setCryptCoin] = useState(null);
 
   function handleChange() {
@@ -74,4 +74,4 @@ function CryptoDetail() {
   );
 }
 
-export default CryptoDetail;
+export default DetailCrypto;

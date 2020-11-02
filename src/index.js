@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./styles/normalize.css";
 import "./styles/index.css";
 import NavCrypto from "./components/NavCrypto/NavCrypto";
-import ListCrypto from "./components/ListCrypto/ListCryptoCurrency";
+import ListCrypto from "./components/ListCrypto/ListCryptoCurrencies";
 import DetailCrypto from "./components/DetailCrypto/DetailCrypto";
 import ListCryptoDerivatives from "./components/ListCrypto/ListCryptoDerivatives";
 ReactDOM.render(
@@ -12,8 +12,8 @@ ReactDOM.render(
     <BrowserRouter>
       <NavCrypto />
       <Switch>
+        <Route path="/" component={ListCrypto} />
         <Route path="/" exact component={ListCryptoDerivatives} />
-        <Route path="/" exact component={ListCrypto} />
         <Route path="/detail/:cryptoId" component={DetailCrypto} />
       </Switch>
     </BrowserRouter>

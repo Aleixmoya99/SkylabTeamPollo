@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import cryptoStore from "../../stores/crypto-store";
-import { loadCoinsMarkets, changeList } from "../../actions/action-creators";
+import {
+  loadCoinsMarkets,
+  changeList,
+  errorNoSavedCurrency,
+} from "../../actions/action-creators";
 import { Link } from "react-router-dom";
-function CryptoList() {
+function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
 
   function handleChange() {
@@ -20,7 +24,6 @@ function CryptoList() {
 
   return (
     <>
-      <h1>Hola Gilberto</h1>
       Check:
       <input
         type="checkBox"
@@ -30,13 +33,19 @@ function CryptoList() {
             if (cryptoStore.getSavedCrypto()) {
               changeList();
             } else {
-              //code goes here
+              errorNoSavedCurrency();
+              document.getElementById("ErrorMsg").style.display = "inline";
             }
           } else {
             loadCoinsMarkets();
+            document.getElementById("ErrorMsg").style.display = "none";
           }
         }}
       />
+      <br />
+      <h2 id="ErrorMsg" style={{ display: "none" }}>
+        Error, no Saved Crypto
+      </h2>
       <ul class="Menu">
         {cryptoList ? (
           cryptoList.map((data) => (
@@ -63,4 +72,4 @@ function CryptoList() {
   );
 }
 
-export default CryptoList;
+export default ListCryptoCurrencies;
