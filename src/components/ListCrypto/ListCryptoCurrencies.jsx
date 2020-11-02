@@ -24,7 +24,6 @@ function ListCryptoCurrencies() {
 
   return (
     <>
-      <h1>Hola Gilberto</h1>
       Check:
       <input
         type="checkBox"
@@ -35,12 +34,18 @@ function ListCryptoCurrencies() {
               changeList();
             } else {
               errorNoSavedCurrency();
+              document.getElementById("ErrorMsg").style.display = "inline";
             }
           } else {
             loadCoinsMarkets();
+            document.getElementById("ErrorMsg").style.display = "none";
           }
         }}
       />
+      <br />
+      <h2 id="ErrorMsg" style={{ display: "none" }}>
+        Error, no Saved Crypto
+      </h2>
       <ul class="Menu">
         {cryptoList ? (
           cryptoList.map((data) => (

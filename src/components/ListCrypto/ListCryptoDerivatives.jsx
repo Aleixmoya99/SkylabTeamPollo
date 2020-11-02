@@ -69,6 +69,4 @@ function ListCryptoDerivatives() {
     )
 }
 
-
-
 export default ListCryptoDerivatives
