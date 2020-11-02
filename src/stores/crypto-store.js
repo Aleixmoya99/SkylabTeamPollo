@@ -6,7 +6,7 @@ let savedCrypto, cryptoMarkets, cryptoCoins, cryptoDerivatives;
 
 const CHANGE = "CHANGE";
 
-export class CryptoData extends EventEmitter {
+class CryptoData extends EventEmitter {
   getCryptoList() {
     return cryptoMarkets;
   }
@@ -59,6 +59,7 @@ export class CryptoData extends EventEmitter {
 }
 
 const cryptoData = new CryptoData();
+
 dispatcher.register((action) => {
   switch (action.type) {
     case actionTypes.LOAD_CRYPTO_COIN_LIST:
