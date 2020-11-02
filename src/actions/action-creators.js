@@ -87,6 +87,7 @@ export async function loadDerivativesList(show = 25, page = 0) {
   const derivativesList = await coinGeckoClient.derivatives.allExchanges({
     ...params,
   });
+
   dispatcher.dispatch({
     type: actionTypes.LOAD_DERIVATIVES_LIST,
     payload: derivativesList,
