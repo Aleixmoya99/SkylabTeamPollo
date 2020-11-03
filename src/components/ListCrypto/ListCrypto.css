@@ -26,7 +26,7 @@
   border-bottom: 1px solid #c1c6c8;
 }
 
-.currencies-table::-webkit-scrollbar {
+.currencies-list::-webkit-scrollbar {
   display: none;
 }
 /*# sourceMappingURL=ListCrypto.css.map */

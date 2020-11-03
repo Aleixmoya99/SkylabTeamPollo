@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
-let savedCrypto, cryptoMarkets, cryptoCoins, cryptoDerivatives;
+let savedCrypto, cryptoMarkets, cryptoCoin, cryptoDerivatives;
 
 const CHANGE = "CHANGE";
 
@@ -14,10 +14,10 @@ class CryptoData extends EventEmitter {
     cryptoMarkets = param;
   }
   getCryptoCoin() {
-    return cryptoCoins;
+    return cryptoCoin;
   }
   setCryptoCoin(param) {
-    cryptoCoins = param;
+    cryptoCoin = param;
   }
   getSavedCrypto() {
     return savedCrypto;
@@ -56,18 +56,6 @@ class CryptoData extends EventEmitter {
   setFavoritesCryptos(params) {
     savedCrypto = params;
   }
-  /*roundNumbers(num, locale = "en") {
-    // Nine Zeroes for Billions
-    return Math.abs(Number(num)) >= 1.0e9
-      ? Math.round(Math.abs(Number(num)) / 1.0e9) + " B"
-      : // Six Zeroes for Millions
-      Math.abs(Number(num)) >= 1.0e6
-      ? Math.round(Math.abs(Number(num)) / 1.0e6) + " M"
-      : // Three Zeroes for Thousands
-      Math.abs(Number(num)) >= 1.0e3
-      ? Math.round(Math.abs(Number(num)) / 1.0e3) + " K"
-      : Math.abs(Number(num));
-  }*/
 }
 
 const cryptoData = new CryptoData();
@@ -79,7 +67,7 @@ dispatcher.register((action) => {
       cryptoData.emitChange();
       break;
     case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
-      cryptoCoins = action.payload;
+      cryptoCoin = action.payload;
       cryptoData.emitChange();
       break;
     case actionTypes.LOAD_DERIVATIVES_LIST:

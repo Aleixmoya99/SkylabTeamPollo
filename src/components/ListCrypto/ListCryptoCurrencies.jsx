@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./ListCrypto.css";
 import cryptoStore from "../../stores/crypto-store";
 import {
-  loadCoinsMarkets,
   changeList,
   errorNoSavedCurrency,
   loadCoinsAll,
-  loadCoinByID,
 } from "../../actions/action-creators";
 import CreateListItem from "./CreateListItemCryptoCurrency";
-import { Link } from "react-router-dom";
-import { Sparklines, SparklinesBars } from "react-sparklines";
+
 function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
 
@@ -44,7 +41,6 @@ function ListCryptoCurrencies() {
                   document.getElementById("ErrorMsg").style.display = "inline";
                 }
               } else {
-                loadCoinsMarkets();
                 loadCoinsAll();
                 document.getElementById("ErrorMsg").style.display = "none";
               }
@@ -74,9 +70,9 @@ function ListCryptoCurrencies() {
             </thead>
             <tbody>
               {cryptoList &&
-                cryptoList.map((data, index) => (
-                  <CreateListItem data={data} key={index} />
-                ))}
+                cryptoList.map((data, index) => {
+                  return <CreateListItem data={data} key={index} />;
+                })}
             </tbody>
           </table>
         </section>
