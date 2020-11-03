@@ -7,6 +7,7 @@ import NavCrypto from "./components/NavCrypto/NavCrypto";
 import ListCrypto from "./components/ListCrypto/ListCryptoCurrencies";
 import ListCryptoDerivatives from "./components/ListCrypto/ListCryptoDerivatives";
 import FooterCrypto from "./components/FooterCrypto/FooterCrypto";
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

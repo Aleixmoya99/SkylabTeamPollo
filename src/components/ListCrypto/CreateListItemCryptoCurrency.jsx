@@ -1,12 +1,15 @@
 import React from "react";
 import GenerateSparkline from "./GenerateSparkline";
+import "@djthoms/pretty-checkbox";
+import MakeButtonSave from "./ButtonComponent";
+
 function CreateListItemCryptoCurrency({ data }) {
   const currentCoin = data.id;
   return (
     <>
       <tr className="list-container">
         <td>
-          <span className="far fa-star"></span>
+          <MakeButtonSave data={data} />
         </td>
         <td>{`${data.market_data.market_cap_rank}`}</td>
         <td>
