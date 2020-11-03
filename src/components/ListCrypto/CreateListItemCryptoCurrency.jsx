@@ -1,18 +1,23 @@
 import React from "react";
-import {} from "../../actions/action-creators";
-import { Sparklines } from "react-sparklines";
+import GenerateSparkline from "./GenerateSparkline";
+import "@djthoms/pretty-checkbox";
+import MakeButtonSave from "./ButtonComponent";
 
-function CreateListItemCryptoCurrency({ data, key }) {
+function CreateListItemCryptoCurrency({ data }) {
+  const currentCoin = data.id;
   return (
-    <tr className="list-container" key={key}>
+    <tr className="list-container">
       <td>
-        <span className="far fa-star"></span>
+        <MakeButtonSave data={data} />
       </td>
       <td>{`${data.market_data.market_cap_rank}`}</td>
       <td>
         <img src={data.image.thumb} alt="crypto-logo" />
       </td>
       <td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
+      <td>
+        <GenerateSparkline coinId={currentCoin} />
+      </td>
       <td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
       <td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
       <td>{`${data.market_data.price_change_percentage_7d.toFixed(2)}`}</td>
