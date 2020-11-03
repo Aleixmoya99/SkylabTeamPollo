@@ -1,89 +1,47 @@
 import {
-  loadCoinsAll,
-  loadCoinsList,
-  loadCoinsMarkets,
-  loadCoinByID,
-  loadDerivativesList,
-  changeList,
-  errorNoSavedCurrency,
-  updateCoinById,
-} from "./action-creators";
-import dispatcher from "../dispatcher/dispatcher";
-import CoinGecko from "coingecko-api";
+	loadCoinsAll,
+	loadCoinByID,
+	loadDerivativesList,
+	changeList,
+	errorNoSavedCurrency
+} from './action-creators';
+import dispatcher from '../dispatcher/dispatcher';
 
-describe("actions creator", () => {
-  let coinGeckoClient = null;
-  beforeEach(() => {
-    coinGeckoClient = new CoinGecko();
-  });
+jest.mock('../dispatcher/dispatcher');
 
-  test("load coins market", async () => {
-    dispatcher.dispatch = jest.fn();
+describe('actions creator', () => {
+	test('load coins id', async () => {
+		await loadCoinByID();
 
-    await loadCoinsMarkets();
+		const calls = dispatcher.dispatch.mock.calls[0].length;
+		expect(calls).toBe(1);
+	});
 
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
+	test('load derivatives coins', async () => {
+		await loadDerivativesList();
 
-  test("load coins id", async () => {
-    dispatcher.dispatch = jest.fn();
+		const calls = dispatcher.dispatch.mock.calls[0].length;
+		expect(calls).toBe(1);
+	});
 
-    await loadCoinByID();
+	test('change coins list', async () => {
+		await changeList();
 
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
+		const calls = dispatcher.dispatch.mock.calls[0].length;
+		expect(calls).toBe(1);
+	});
 
-  test("load derivatives coins", async () => {
-    dispatcher.dispatch = jest.fn();
+	test('error no saved currency', async () => {
+		await errorNoSavedCurrency();
 
-    await loadDerivativesList();
+		const calls = dispatcher.dispatch.mock.calls[0].length;
+		expect(calls).toBe(1);
+	});
 
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
+	test('load all coins', async () => {
+		await loadCoinsAll();
 
-  test("change coins list", async () => {
-    dispatcher.dispatch = jest.fn();
-
-    await changeList();
-
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
-
-  test("error no saved currency", async () => {
-    dispatcher.dispatch = jest.fn();
-
-    await errorNoSavedCurrency();
-
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
-  test("load coins list", async () => {
-    dispatcher.dispatch = jest.fn();
-
-    await loadCoinsList();
-
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
-  test("load update coins by id", async () => {
-    dispatcher.dispatch = jest.fn();
-
-    await updateCoinById();
-
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
-
-  test("load all coins", async () => {
-    dispatcher.dispatch = jest.fn();
-
-    await loadCoinsAll();
-
-    const calls = dispatcher.dispatch.mock.calls[0].length;
-    expect(calls).toBe(1);
-  });
+		const calls = dispatcher.dispatch.mock.calls[0].length;
+		expect(calls).toBe(1);
+	});
 });
