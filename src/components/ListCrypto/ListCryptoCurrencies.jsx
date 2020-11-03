@@ -87,36 +87,6 @@ function ListCryptoCurrencies() {
             )}
           </table>
         </section>
-        {/* <ul class="Menu">
-          {cryptoList ? (
-            cryptoList.map((data, index) => (
-              <>
-                <Link to={`/${data.id}`}>
-                  <li id="coinList" key={data.id}>
-                    <img id="logo" src={data.image.small} alt="logo" />
-                    <div id="textInList">
-                      <p>{`${data.name}`}</p>
-                      <p id="textInEachComponent">
-                        {`Current value: ${data.market_data.current_price.eur}`}
-                      </p>
-                      <p id="textInEachComponent">
-                        {`24hour value change:${data.market_data.price_change_percentage_24h}`}
-                      </p>
-                    </div>
-                  </li>
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => cryptoStore.saveCrypto(data)}
-                >
-                  Save
-                </button>
-              </>
-            ))
-          ) : (
-            <li>LOADING....</li>
-          )}
-        </ul> */}
       </div>
     </>
   );
