@@ -9,8 +9,24 @@ function ButtonSave({ data }) {
       <Checkbox
         animation="pulse"
         color="info-o"
-        onClick={() => cryptoStore.saveCrypto(data)}
-      ></Checkbox>
+        class="checkBoxFav"
+        id={data.id}
+        checked={data.mostrar}
+        onClick={() => {
+          if (!document.getElementById(data.id).checked) {
+            cryptoStore.deleteSaveData(data);
+            data.mostrar = !data.mostrar;
+            console.log("cosan't");
+          }
+          if (document.getElementById(data.id).checked) {
+            cryptoStore.saveCrypto(data);
+            data.mostrar = !data.mostrar;
+            console.log("cosa");
+          }
+          cryptoStore.getSavedCrypto();
+          cryptoStore.getCryptoList();
+        }}
+      />
     </>
   );
 }
