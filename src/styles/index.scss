@@ -2,6 +2,8 @@
 
 $bgColor: #141622;
 $navBgColor: #161619;
+$footerBgColor: #222531;
+$buttonColor: #3861fb;
 $listBgColor: #171924;
 $mainTextColor: #fff;
 $secondaryTextColor: #c1c6c8;
@@ -14,11 +16,107 @@ body {
   color: $mainTextColor;
 }
 
-.loading {
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 10px solid #3498db;
-  width: 100px;
-  height: 100px;
-  animation: spin 2s linear infinite;
+a,
+a:active,
+a:visited {
+  color: $mainTextColor;
+  text-decoration: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+.mainList {
+  display: flex;
+  flex-direction: column;
+}
+.listLegend {
+  margin-top: 2%;
+}
+#coinList {
+  border-radius: 20px;
+  background: #86e9dc;
+  height: 100%;
+  padding: 1%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#logo {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+#textInList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#textInEachComponent {
+  margin-left: 20%;
+}
+
+.footer-container {
+  .footer-subscribe {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: $footerBgColor;
+    .footer-message-text {
+      .footer-title {
+        margin-bottom: 20px;
+      }
+      .footer-title > span {
+        display: block;
+        font-size: 120%;
+      }
+      .footer-text {
+        margin-bottom: 30px;
+      }
+    }
+    .newsletter-inputs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      height: 40px;
+      #email {
+        height: 100%;
+        padding-left: 15px;
+        outline: none;
+        background-color: $footerBgColor !important;
+        border: 1px solid $secondaryTextColor;
+        border-radius: 8px;
+      }
+      #email:hover {
+        border: 1px solid $buttonColor;
+      }
+      .newsletter-button {
+        margin-left: 20px;
+        height: 100%;
+        padding: 0 15px;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        color: $mainTextColor;
+        font-weight: 600;
+        background-color: $buttonColor;
+      }
+      .newsletter-button:hover {
+        background-color: #486dfb;
+      }
+    }
+  }
+}
+.footer-links {
+  background-color: $bgColor;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 20px;
+  .footer-link {
+    padding: 5px;
+  }
+  .footer-link:hover {
+    color: black;
+  }
 }

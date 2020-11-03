@@ -13,11 +13,11 @@ ReactDOM.render(
     <BrowserRouter>
       <NavCrypto />
       <Switch>
-        <Route path="/" component={FooterCrypto} />
         <Route path="/" component={ListCrypto} />
         <Route path="/" exact component={ListCryptoDerivatives} />
         <Route path="/detail/:cryptoId" component={DetailCrypto} />
       </Switch>
+      <FooterCrypto />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
