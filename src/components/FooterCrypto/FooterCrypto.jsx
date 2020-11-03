@@ -1,4 +1,5 @@
 import React from "react";
+import "./FooterCrypto.css";
 import { Link } from "react-router-dom";
 
 function FooterCrypto() {

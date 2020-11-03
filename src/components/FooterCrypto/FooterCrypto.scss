@@ -1,0 +1,74 @@
+$bgColor: #141622;
+$navBgColor: #161619;
+$footerBgColor: #222531;
+$buttonColor: #3861fb;
+$listBgColor: #171924;
+$mainTextColor: #fff;
+$secondaryTextColor: #c1c6c8;
+$negativeValue: #ea2e30;
+$positiveValue: #16c784;
+
+.footer-container {
+  .footer-subscribe {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: $footerBgColor;
+    .footer-message-text {
+      .footer-title {
+        margin-bottom: 20px;
+      }
+      .footer-title > span {
+        display: block;
+        font-size: 120%;
+      }
+      .footer-text {
+        margin-bottom: 30px;
+      }
+    }
+    .newsletter-inputs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      height: 40px;
+      #email {
+        color: $mainTextColor !important;
+        height: 100%;
+        padding-left: 15px;
+        outline: none;
+        background-color: $footerBgColor !important;
+        border: 1px solid $secondaryTextColor;
+        border-radius: 8px;
+      }
+      #email:hover {
+        border: 1px solid $buttonColor;
+      }
+      .newsletter-button {
+        margin-left: 20px;
+        height: 100%;
+        padding: 0 15px;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        color: $mainTextColor;
+        font-weight: 600;
+        background-color: $buttonColor;
+      }
+      .newsletter-button:hover {
+        background-color: #486dfb;
+      }
+    }
+  }
+}
+.footer-links {
+  background-color: $bgColor;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 20px;
+  .footer-link {
+    padding: 5px;
+  }
+  .footer-link:hover {
+    color: black;
+  }
+}
