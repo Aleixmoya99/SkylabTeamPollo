@@ -14,7 +14,6 @@ export async function loadCoinsAll(show = 50, curPage = 0) {
   };
 
   const coinAll = await coinGeckoClient.coins.all({ ...params });
-  console.log(coinAll.data);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_LIST,
     payload: coinAll.data,
@@ -58,7 +57,6 @@ export async function loadCoinByID(coinId) {
     sparkline: true,
   };
   const coinById = await coinGeckoClient.coins.fetch(coinId, { ...params });
-  console.log(coinById);
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
     payload: coinById,

@@ -3,7 +3,6 @@ import {} from "../../actions/action-creators";
 import { Sparklines } from "react-sparklines";
 
 function CreateListItemCryptoCurrency({ data, key }) {
-  console.log(data);
   return (
     <tr className="list-container" key={key}>
       <td>
