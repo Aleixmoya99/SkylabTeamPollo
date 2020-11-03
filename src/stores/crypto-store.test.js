@@ -3,6 +3,9 @@ import dispatcher from "../dispatcher/dispatcher";
 import actionTypes from "../actions/action-types";
 
 describe("test crypto-store", () => {
+  /*beforeEach(() => {
+    cryptoData.setFavoritesCryptos(null);
+  });*/
   test("testing get crypto list", () => {
     cryptoData.setCryptoList([]);
     expect(cryptoData.getCryptoList()).toEqual([]);
@@ -19,16 +22,18 @@ describe("test crypto-store", () => {
     cryptoData.setCryptoDerivatives([]);
     expect(cryptoData.getCryptoDerivatives()).toEqual([]);
   });
-  test("testing saved crypto", () => {
-    const response = cryptoData.saveCrypto(cryptoData);
-    expect(response).toEqual();
-  });
+
   test("testing if saved crypto", () => {
     //arrange
     cryptoData.saveCrypto({ id: "1" });
     //assert
-    expect(cryptoData.getFavoritesCryptos()).toEqual({ id: "1" });
+    expect(cryptoData.getFavoritesCryptos()).toEqual([{ id: "1" }]);
   });
+  test("testing saved crypto", () => {
+    const response = cryptoData.saveCrypto(cryptoData);
+    expect(response).toEqual();
+  });
+
   test("testing get favorites crypto", () => {
     cryptoData.setFavoritesCryptos([]);
     expect(cryptoData.getFavoritesCryptos()).toEqual([]);
