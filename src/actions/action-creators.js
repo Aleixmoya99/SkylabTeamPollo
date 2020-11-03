@@ -59,7 +59,7 @@ export async function loadCoinByID(coinId) {
   const coinById = await coinGeckoClient.coins.fetch(coinId, { ...params });
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
-    payload: coinById,
+    payload: coinById.data,
   });
 }
 
