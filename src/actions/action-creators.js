@@ -20,33 +20,6 @@ export async function loadCoinsAll(show = 50, curPage = 0) {
   });
 }
 
-export async function loadCoinsMarkets(show = 25, curPage = 0) {
-  //Return an array with 25 coins market data (price, market cap, volume).
-  const params = {
-    order: CoinGecko.ORDER.GECKO_DESC,
-    per_page: show,
-    page: curPage,
-    localization: false,
-    vs_currency: "eur",
-  };
-
-  const coinMarkets = await coinGeckoClient.coins.markets({ ...params });
-  dispatcher.dispatch({
-    type: actionTypes.LOAD_CRYPTO_MARKETS_LIST,
-    payload: coinMarkets.data,
-  });
-}
-
-export async function loadCoinsList() {
-  //Return and array with all existing Coins
-  //Data: ids/names/symbol
-  const coinList = await coinGeckoClient.coins.list();
-  dispatcher.dispatch({
-    type: actionTypes.LOAD_CRYPTO_COIN_LIST,
-    payload: coinList,
-  });
-}
-
 export async function loadCoinByID(coinId) {
   //Return data from especific coin ID
   const params = {
@@ -59,24 +32,7 @@ export async function loadCoinByID(coinId) {
   const coinById = await coinGeckoClient.coins.fetch(coinId, { ...params });
   dispatcher.dispatch({
     type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
-    payload: coinById,
-  });
-}
-
-export async function updateCoinById(coinId) {
-  //Get status updates for a given coin.
-  const params = {
-    per_page: 5,
-  };
-  const currentUpdateCoinById = await coinGeckoClient.coins.fetchStatusUpdates(
-    coinId,
-    {
-      ...params,
-    }
-  );
-  dispatcher.dispatch({
-    type: actionTypes.UPDATE_CRYPTO_COIN_BY_ID,
-    payload: currentUpdateCoinById,
+    payload: coinById.data,
   });
 }
 

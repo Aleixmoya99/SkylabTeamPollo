@@ -1,0 +1,38 @@
+$bgColor: #141622;
+$navBgColor: #161619;
+$footerBgColor: #222531;
+$buttonColor: #3861fb;
+$listBgColor: #171924;
+$mainTextColor: #fff;
+$secondaryTextColor: #c1c6c8;
+$negativeValue: #ea2e30;
+$positiveValue: #16c784;
+
+.currencies-list {
+  background-color: $footerBgColor;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  position: relative;
+  margin: 0 100px;
+
+  .table-container {
+    margin: 0 auto;
+    border-collapse: collapse;
+    .table-headings {
+      text-align: left;
+      .fix-column {
+        position: absolute;
+      }
+    }
+    .list-container > td {
+      cursor: pointer;
+      padding: 20px 0;
+      border-bottom: 1px solid $secondaryTextColor;
+    }
+  }
+}
+
+.currencies-list::-webkit-scrollbar {
+  display: none;
+}
