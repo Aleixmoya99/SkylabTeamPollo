@@ -21,6 +21,7 @@ function GenerateSparkline({ coinId }) {
       cryptoStore.removeEventListener(handleChange);
     };
   }, [coinSparklines]);
+
   return (
     <div>
       {coinSparklines && (

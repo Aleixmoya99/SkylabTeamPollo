@@ -11,17 +11,17 @@ function DropDown({ options, nestedDropDown }) {
 
   return (
     <ul className={ulClassName}>
-      {Object.keys(options).map((optionKey) => {
+      {Object.keys(options).map((optionKey, index) => {
         let value = options[optionKey];
         if (value === null) {
           return (
-            <li className={liClassName}>
+            <li className={liClassName} key={index}>
               <a href="*">{optionKey}</a>
             </li>
           );
         } else {
           return (
-            <li className={liClassName}>
+            <li className={liClassName} key={index}>
               <a href="*">{optionKey}</a>
               <DropDown options={value} nestedDropDown={true} />
             </li>

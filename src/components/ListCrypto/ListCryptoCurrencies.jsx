@@ -7,15 +7,9 @@ import {
   loadCoinsAll,
 } from "../../actions/action-creators";
 import CreateListItem from "./CreateListItemCryptoCurrency";
-<<<<<<< HEAD
-
-=======
-import { Link } from "react-router-dom";
-import { Sparklines, SparklinesBars } from "react-sparklines";
 import { Switch } from "pretty-checkbox-react";
-
 import "@djthoms/pretty-checkbox";
->>>>>>> 4b5143f5d8ac44b614fcead6e3cd4a921240a4a5
+
 function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
 
