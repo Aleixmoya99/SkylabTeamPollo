@@ -45,6 +45,7 @@ function ListCryptoCurrencies() {
               if (document.getElementById("thisCheckBox").checked) {
                 if (cryptoStore.getSavedCrypto()) {
                   changeList();
+                  console.log(cryptoStore.getCryptoList());
                 } else {
                   errorNoSavedCurrency();
                   document.getElementById("ErrorMsg").style.display = "inline";

@@ -7,6 +7,8 @@ import MakeButtonSave from "./ButtonComponent";
 
 import "@djthoms/pretty-checkbox";
 function CreateListItemCryptoCurrency({ data, key }) {
+  cryptoStore.getSavedCrypto();
+  cryptoStore.getCryptoList();
   return (
     <tr className="list-container" key={key}>
       <td>{`${data.market_data.market_cap_rank}`}</td>

@@ -48,7 +48,19 @@ class CryptoData extends EventEmitter {
     savedCrypto.forEach((element) => {
       element.id === data.id && (flag = 1);
     });
-    flag === 0 && savedCrypto.push(data);
+    if (flag === 0) {
+      savedCrypto.push(data);
+    }
+    console.log(savedCrypto);
+  }
+  deleteSaveData(data) {
+    for (let i = 0; i < savedCrypto.length; i++) {
+      if (savedCrypto[i].id === data.id) {
+        savedCrypto.splice(i, 1);
+        break;
+      }
+    }
+    console.log(savedCrypto);
   }
   getFavoritesCryptos() {
     return savedCrypto;
