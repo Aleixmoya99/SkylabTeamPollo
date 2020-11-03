@@ -10,6 +10,9 @@ import {
 import CreateListItem from "./CreateListItemCryptoCurrency";
 import { Link } from "react-router-dom";
 import { Sparklines, SparklinesBars } from "react-sparklines";
+import { Switch } from "pretty-checkbox-react";
+
+import "@djthoms/pretty-checkbox";
 function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
 
@@ -32,8 +35,10 @@ function ListCryptoCurrencies() {
     <>
       <div class="mainList">
         <div class="listLegend">
-          Check:
-          <input
+          Show Saved:
+          <Switch
+            shape="fill"
+            color="primary"
             type="checkBox"
             id="thisCheckBox"
             onClick={() => {
@@ -63,10 +68,10 @@ function ListCryptoCurrencies() {
             </Sparklines>
             <caption>Crypto Currencies</caption>
             <tr className="table-headings">
-              <th></th>
               <th>Rank</th>
-              <th></th>
+              <th>Save</th>
               <th>Name</th>
+              <th></th>
               <th>Price</th>
               <th>24h</th>
               <th>7d</th>

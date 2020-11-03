@@ -1,14 +1,18 @@
 import React from "react";
 import {} from "../../actions/action-creators";
 import { Sparklines } from "react-sparklines";
+import cryptoStore from "../../stores/crypto-store";
+import { Checkbox, Radio, Switch } from "pretty-checkbox-react";
+import MakeButtonSave from "./ButtonComponent";
 
+import "@djthoms/pretty-checkbox";
 function CreateListItemCryptoCurrency({ data, key }) {
   return (
     <tr className="list-container" key={key}>
-      <td>
-        <span className="far fa-star"></span>
-      </td>
       <td>{`${data.market_data.market_cap_rank}`}</td>
+      <td>
+        <MakeButtonSave data={data} />
+      </td>
       <td>
         <img src={data.image.thumb} alt="crypto-logo" />
       </td>
