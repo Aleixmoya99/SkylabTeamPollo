@@ -4,46 +4,178 @@ body {
   background-color: #141622;
   color: #fff;
 }
-#root{
-  display: flex;
-  flex-direction: column;
+
+a,
+a:active,
+a:visited {
+  color: #fff;
+  text-decoration: none;
 }
-.mainList{
+
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.listLegend{
+
+.mainList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.listLegend {
   margin-top: 2%;
 }
-#coinList{
-    border-radius: 20px;
-    background: #86E9DC;
-    height: 100%; 
-    padding: 1%; 
-    margin: 2%; 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+#coinList {
+  border-radius: 20px;
+  background: #86e9dc;
+  height: 100%;
+  padding: 1%;
+  margin: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-#logo{
+
+#logo {
   margin-left: 1%;
   margin-right: 1%;
 }
-#textInList{
+
+#textInList {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-#textInEachComponent{
-  margin-left:20%;
+
+#textInEachComponent {
+  margin-left: 20%;
 }
-.loading {
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 10px solid #3498db;
-  width: 100px;
-  height: 100px;
-  -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
+
+.footer-container .footer-subscribe {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #222531;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-title {
+  margin-bottom: 20px;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-title > span {
+  display: block;
+  font-size: 120%;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-text {
+  margin-bottom: 30px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs #email {
+  height: 100%;
+  padding-left: 15px;
+  outline: none;
+  background-color: #222531 !important;
+  border: 1px solid #c1c6c8;
+  border-radius: 8px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs #email:hover {
+  border: 1px solid #3861fb;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs .newsletter-button {
+  margin-left: 20px;
+  height: 100%;
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #3861fb;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs .newsletter-button:hover {
+  background-color: #486dfb;
+}
+
+.footer-links {
+  background-color: #141622;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-links .footer-link {
+  padding: 5px;
+}
+
+.footer-links .footer-link:hover {
+  color: black;
+}
+
+.currencies-table {
+  overflow-x: scroll;
+  padding: 20px 0 20px 20px;
+}
+
+.currencies-table .table-headings {
+  text-align: left;
+}
+
+.currencies-table .table-container {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.currencies-table .table-container .list-container > td {
+  cursor: pointer;
+  font-size: 110%;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c6c8;
+}
+
+.currencies-table::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
