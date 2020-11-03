@@ -5,7 +5,9 @@ import {
   changeList,
   errorNoSavedCurrency,
   loadCoinsAll,
+  loadCoinByID,
 } from "../../actions/action-creators";
+import CreateListItem from "./CreateListItemCryptoCurrency";
 import { Link } from "react-router-dom";
 function ListCryptoCurrencies() {
   const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
@@ -18,6 +20,7 @@ function ListCryptoCurrencies() {
     if (!cryptoList) {
       loadCoinsMarkets();
       loadCoinsAll();
+      loadCoinByID("bitcoin");
     }
     return () => {
       cryptoStore.removeEventListener(handleChange);
@@ -52,9 +55,32 @@ function ListCryptoCurrencies() {
         <h2 id="ErrorMsg" style={{ display: "none" }}>
           Error, no Saved Crypto
         </h2>
-        <ul class="Menu">
+        <section className="currencies-table">
+          <table className="table-container">
+            <caption>Crypto Currencies</caption>
+            <tr>
+              <th></th>
+              <th>Rank</th>
+              <th></th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h</th>
+              <th>7d</th>
+              <th>Market Cap</th>
+              <th>Circulating Supply</th>
+            </tr>
+            {cryptoList ? (
+              cryptoList.map((data, index) => (
+                <CreateListItem data={data} key={index} />
+              ))
+            ) : (
+              <li>LOADING....</li>
+            )}
+          </table>
+        </section>
+        {/* <ul class="Menu">
           {cryptoList ? (
-            cryptoList.map((data) => (
+            cryptoList.map((data, index) => (
               <>
                 <Link to={`/${data.id}`}>
                   <li id="coinList" key={data.id}>
@@ -81,7 +107,7 @@ function ListCryptoCurrencies() {
           ) : (
             <li>LOADING....</li>
           )}
-        </ul>
+        </ul> */}
       </div>
     </>
   );

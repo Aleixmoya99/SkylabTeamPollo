@@ -77,7 +77,7 @@ a:visited {
 }
 
 .footer-container .footer-subscribe {
-  margin-bottom: 20px;
+  margin: 20px 0;
   padding: 20px;
   background-color: #222531;
 }
@@ -152,5 +152,18 @@ a:visited {
 
 .footer-links .footer-link:hover {
   color: black;
+}
+
+.currencies-table {
+  overflow-x: scroll;
+  padding: 20px 0 20px 20px;
+}
+
+.currencies-table .table-container {
+  margin: 0 auto;
+}
+
+.currencies-table::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
