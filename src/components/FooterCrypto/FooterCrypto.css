@@ -1,0 +1,79 @@
+.footer-container .footer-subscribe {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #222531;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-title {
+  margin-bottom: 20px;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-title > span {
+  display: block;
+  font-size: 120%;
+}
+
+.footer-container .footer-subscribe .footer-message-text .footer-text {
+  margin-bottom: 30px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs #email {
+  color: #fff !important;
+  height: 100%;
+  padding-left: 15px;
+  outline: none;
+  background-color: #222531 !important;
+  border: 1px solid #c1c6c8;
+  border-radius: 8px;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs #email:hover {
+  border: 1px solid #3861fb;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs .newsletter-button {
+  margin-left: 20px;
+  height: 100%;
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  background-color: #3861fb;
+}
+
+.footer-container .footer-subscribe .newsletter-inputs .newsletter-button:hover {
+  background-color: #486dfb;
+}
+
+.footer-links {
+  background-color: #141622;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-links .footer-link {
+  padding: 5px;
+}
+
+.footer-links .footer-link:hover {
+  color: black;
+}
+/*# sourceMappingURL=FooterCrypto.css.map */
