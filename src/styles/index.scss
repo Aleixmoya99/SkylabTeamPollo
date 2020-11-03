@@ -124,9 +124,18 @@ a:visited {
 .currencies-table {
   overflow-x: scroll;
   padding: 20px 0 20px 20px;
-
+  .table-headings {
+    text-align: left;
+  }
   .table-container {
     margin: 0 auto;
+    border-collapse: collapse;
+    .list-container > td {
+      cursor: pointer;
+      font-size: 110%;
+      padding: 20px 0;
+      border-bottom: 1px solid $secondaryTextColor;
+    }
   }
 }
 

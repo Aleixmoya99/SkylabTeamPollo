@@ -159,8 +159,20 @@ a:visited {
   padding: 20px 0 20px 20px;
 }
 
+.currencies-table .table-headings {
+  text-align: left;
+}
+
 .currencies-table .table-container {
   margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.currencies-table .table-container .list-container > td {
+  cursor: pointer;
+  font-size: 110%;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c6c8;
 }
 
 .currencies-table::-webkit-scrollbar {

@@ -62,12 +62,11 @@ function ListCryptoCurrencies() {
               <SparklinesBars />
             </Sparklines>
             <caption>Crypto Currencies</caption>
-            <tr>
+            <tr className="table-headings">
               <th></th>
               <th>Rank</th>
               <th></th>
               <th>Name</th>
-              <th>Line</th>
               <th>Price</th>
               <th>24h</th>
               <th>7d</th>
@@ -79,7 +78,7 @@ function ListCryptoCurrencies() {
                 <CreateListItem data={data} key={index} />
               ))
             ) : (
-              <li>LOADING....</li>
+              <div>LOADING....</div>
             )}
           </table>
         </section>
