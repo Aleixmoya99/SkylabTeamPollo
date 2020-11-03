@@ -6,7 +6,7 @@ let savedCrypto, cryptoMarkets, cryptoCoins, cryptoDerivatives;
 
 const CHANGE = "CHANGE";
 
-export class CryptoData extends EventEmitter {
+class CryptoData extends EventEmitter {
   getCryptoList() {
     return cryptoMarkets;
   }
@@ -51,6 +51,7 @@ export class CryptoData extends EventEmitter {
     flag === 0 && savedCrypto.push(data);
   }
   getFavoritesCryptos() {
+    console.log(savedCrypto);
     return savedCrypto;
   }
   setFavoritesCryptos(params) {

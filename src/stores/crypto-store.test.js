@@ -21,19 +21,13 @@ describe("test crypto-store", () => {
   });
   test("testing saved crypto", () => {
     const response = cryptoData.saveCrypto(cryptoData);
-    expect(response).toEqual(undefined);
+    expect(response).toEqual();
   });
   test("testing if saved crypto", () => {
     //arrange
-    cryptoData.saveCrypto = [{ id: "bitcoin" }, { id: "ethereum" }];
-    //act
-    cryptoData.getFavoritesCryptos({ id: "omg" });
+    cryptoData.saveCrypto({ id: "1" });
     //assert
-    expect(cryptoData.getFavoritesCryptos()).toEqual([
-      { id: "bitcoin" },
-      { id: "ethereum" },
-      { id: "omg" },
-    ]);
+    expect(cryptoData.getFavoritesCryptos()).toEqual({ id: "1" });
   });
   test("testing get favorites crypto", () => {
     cryptoData.setFavoritesCryptos([]);
