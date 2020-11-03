@@ -4,6 +4,7 @@ import DropDown from './DropDown';
 
 function NavCrypto() {
     let options = {
+        "Home": null,
         "Cryptocurrecies": null, 
         "Products": {
             "Where to buy": null, 
@@ -17,7 +18,7 @@ function NavCrypto() {
             "Glossary": null,
             "FAQ": null
         },
-        "Home": null,
+        
         "About": null,
         "Log In": null
 
