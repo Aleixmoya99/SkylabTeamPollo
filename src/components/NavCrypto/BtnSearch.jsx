@@ -1,16 +1,12 @@
 import React from 'react';
-import './BtnSearch.css'
+import './BtnSearch.css';
 
 function BtnSearch() {
-    return (
-        <>
-          <i class="material-icons btn-search">search</i>
-    
-        </>
-    )
+	return (
+		<>
+			<em className="material-icons btn-search">search</em>
+		</>
+	);
 }
 
-
-export default BtnSearch
-
-
+export default BtnSearch;
