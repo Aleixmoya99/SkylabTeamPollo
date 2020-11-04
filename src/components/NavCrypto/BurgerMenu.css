@@ -1,8 +1,3 @@
-.material-icons {
-	font-size: 35px;
-	margin: 5px;
-}
-
 .respmenu a {
 	color: inherit;
 	text-decoration: none;
@@ -11,7 +6,6 @@
 	border-bottom: 2px solid #2c2443;
 	max-width: 200px;
 	background: #2c2443;
-
 	text-shadow: 1px 1px black;
 }
 .respmenu input[type='checkbox'],
@@ -34,14 +28,17 @@
 }
 
 .respmenu input[type='checkbox'] {
+	display: flex;
 	opacity: 0;
 }
 
 .respmenu {
+	align-items: center;
 	color: white;
-	position: relative;
+	display: flex;
 	background: #2c2443;
-	min-height: 48px;
+	position: relative;
+	z-index: 10;
 }
 
 .respmenu nav {
@@ -58,4 +55,10 @@
 
 .respmenu input:not(:checked) ~ .burger-menu-open {
 	display: none;
+}
+
+@media screen and (min-width: 600px) {
+	.respmenu input[type='checkbox'] {
+		display: none;
+	}
 }

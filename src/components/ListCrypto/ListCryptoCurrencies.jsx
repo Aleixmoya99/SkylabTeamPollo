@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './ListCrypto.css';
 import cryptoStore from '../../stores/crypto-store';
-import {
-	changeList,
-	errorNoSavedCurrency,
-	loadCoinsAll
-} from '../../actions/action-creators';
+import { loadCoinsAll } from '../../actions/action-creators';
 import CreateListItem from './CreateListItemCryptoCurrency';
-import { Switch } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
 
 function ListCryptoCurrencies() {
@@ -28,35 +23,7 @@ function ListCryptoCurrencies() {
 
 	return (
 		<>
-			<div className="mainList">
-				<div className="listLegend">
-					Show Saved:
-					<Switch
-						shape="fill"
-						color="primary"
-						type="checkBox"
-						id="thisCheckBox"
-						data-testid="toggle"
-						onClick={() => {
-							console.log('Doing onclick event');
-							if (document.getElementById('thisCheckBox').checked) {
-								if (cryptoStore.getSavedCrypto()) {
-									changeList();
-								} else {
-									errorNoSavedCurrency();
-									document.getElementById('ErrorMsg').style.display = 'inline';
-								}
-							} else {
-								loadCoinsAll();
-								document.getElementById('ErrorMsg').style.display = 'none';
-							}
-						}}
-					/>
-				</div>
-				<br />
-				<h2 id="ErrorMsg" style={{ display: 'none' }}>
-					Error, no Saved Crypto
-				</h2>
+			<div>
 				<section className="currencies-list">
 					<table className="table-container">
 						<caption>Crypto Currencies</caption>
