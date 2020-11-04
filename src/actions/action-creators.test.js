@@ -20,8 +20,15 @@ describe('actions creator', () => {
 	test('load derivatives coins', async () => {
 		await loadDerivativesList();
 
-		const calls = dispatcher.dispatch.mock.calls[0].length;
-		expect(calls).toBe(1);
+		const calls = dispatcher.dispatch.mock.calls[0];
+		expect(typeof calls).toBe('object');
+	});
+
+	test('should load derivatives coins', async () => {
+		await loadDerivativesList();
+
+		const calls = dispatcher.dispatch.mock.calls[0][0];
+		expect(calls.payload.data[0].name).toBe('Binance (Futures)');
 	});
 
 	test('change coins list', async () => {
