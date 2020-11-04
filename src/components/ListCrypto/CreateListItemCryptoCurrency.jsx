@@ -1,5 +1,5 @@
 import React from 'react';
-// import GenerateSparkline from './GenerateSparkline';
+import GenerateSparkline from './GenerateSparkline';
 
 function CreateListItemCryptoCurrency({ data }) {
 	return (
@@ -10,7 +10,7 @@ function CreateListItemCryptoCurrency({ data }) {
 				<img src={data.image.thumb} alt="crypto-logo" />
 			</td>
 			<td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
-			<td>{/* <GenerateSparkline coinId={data} /> */}</td>
+			<GenerateSparkline coinId={data.id} />
 			<td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
 			<td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
 			<td>{`${data.market_data.price_change_percentage_7d.toFixed(2)}`}</td>
