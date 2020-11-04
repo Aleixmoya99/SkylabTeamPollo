@@ -16,6 +16,19 @@
   text-align: left;
 }
 
+.currencies-list .table-container .table-headings th {
+  padding-top: 20px;
+  width: 180px;
+}
+
+.currencies-list .table-container .table-headings .slim {
+  width: 80px;
+}
+
+.currencies-list .table-container .table-headings #price {
+  width: 150px;
+}
+
 .currencies-list .table-container .table-headings .fix-column {
   position: absolute;
 }
@@ -28,5 +41,42 @@
 
 .currencies-list::-webkit-scrollbar {
   display: none;
+}
+
+.derivatives-list {
+  background-color: #222531;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  position: relative;
+  margin: 0 100px;
+}
+
+.derivatives-list .table-container {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.derivatives-list .table-container .table-headings {
+  text-align: left;
+}
+
+.derivatives-list .table-container .table-headings th {
+  padding-top: 15px;
+  width: 230px;
+}
+
+.derivatives-list .table-container .table-headings .fix-column {
+  position: absolute;
+}
+
+.derivatives-list .table-container .list-container > td {
+  cursor: pointer;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c6c8;
+}
+
+.derivatives-list .table-container #logo {
+  padding: 10px;
 }
 /*# sourceMappingURL=ListCrypto.css.map */
