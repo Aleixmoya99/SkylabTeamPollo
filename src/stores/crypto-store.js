@@ -2,34 +2,33 @@ import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher/dispatcher';
 import actionTypes from '../actions/action-types';
 
-let savedCrypto, cryptoMarkets, cryptoCoin, cryptoDerivatives;
-
 const CHANGE = 'CHANGE';
+
+const currentServerData = {
+	cryptoMarkets: null,
+	cryptoCoin: null,
+	cryptoDerivatives: null
+};
 
 class CryptoData extends EventEmitter {
 	getCryptoList() {
-		return cryptoMarkets;
+		return currentServerData.cryptoMarkets;
 	}
 	setCryptoList(param) {
-		cryptoMarkets = param;
+		currentServerData.cryptoMarkets = param;
 	}
 	getCryptoCoin() {
-		return cryptoCoin;
+		return currentServerData.cryptoCoin;
 	}
 	setCryptoCoin(param) {
-		cryptoCoin = param;
+		currentServerData.cryptoCoin = param;
 	}
-	getSavedCrypto() {
-		return savedCrypto;
-	}
-	setSavedCrypto(param) {
-		savedCrypto = param;
-	}
+
 	getCryptoDerivatives() {
-		return cryptoDerivatives;
+		return currentServerData.cryptoDerivatives;
 	}
 	setCryptoDerivatives(param) {
-		cryptoDerivatives = param;
+		currentServerData.cryptoDerivatives = param;
 	}
 	addEventListener(callback) {
 		this.on(CHANGE, callback);
@@ -42,30 +41,6 @@ class CryptoData extends EventEmitter {
 	emitChange() {
 		this.emit(CHANGE);
 	}
-	saveCrypto(data) {
-		let flag = 0;
-		!savedCrypto && (savedCrypto = []);
-		savedCrypto.forEach((element) => {
-			element.id === data.id && (flag = 1);
-		});
-		if (flag === 0) {
-			savedCrypto.push(data);
-		}
-	}
-	deleteSaveData(data) {
-		for (let i = 0; i < savedCrypto.length; i++) {
-			if (savedCrypto[i].id === data.id) {
-				savedCrypto.splice(i, 1);
-				break;
-			}
-		}
-	}
-	getFavoritesCryptos() {
-		return savedCrypto;
-	}
-	setFavoritesCryptos(params) {
-		savedCrypto = params;
-	}
 }
 
 const cryptoData = new CryptoData();
@@ -73,23 +48,15 @@ const cryptoData = new CryptoData();
 dispatcher.register((action) => {
 	switch (action.type) {
 		case actionTypes.LOAD_CRYPTO_COIN_LIST:
-			cryptoMarkets = action.payload;
+			currentServerData.cryptoMarkets = action.payload;
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
-			cryptoCoin = action.payload;
+			currentServerData.cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_DERIVATIVES_LIST:
-			cryptoDerivatives = action.payload;
-			cryptoData.emitChange();
-			break;
-		case actionTypes.CHANGE_LIST:
-			cryptoMarkets = savedCrypto;
-			cryptoData.emitChange();
-			break;
-		case actionTypes.ERROR_NO_SAVEDCURRENCY:
-			cryptoMarkets = [];
+			currentServerData.cryptoDerivatives = action.payload;
 			cryptoData.emitChange();
 			break;
 		default:
