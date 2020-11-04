@@ -7,10 +7,19 @@ const CHANGE = 'CHANGE';
 const currentServerData = {
 	cryptoMarkets: null,
 	cryptoCoin: null,
-	cryptoDerivatives: null
+	cryptoDerivatives: null,
+	cryptoCoinSpark: []
 };
 
 class CryptoData extends EventEmitter {
+	getSparklineData(currentId) {
+		debugger;
+		let currentSparkline = currentServerData.cryptoCoinSpark.indexOf((data) => {
+			return data.id === currentId;
+		});
+		return currentServerData.cryptoCoinSpark[currentSparkline].sparklines;
+	}
+
 	getCryptoList() {
 		return currentServerData.cryptoMarkets;
 	}
@@ -52,6 +61,15 @@ dispatcher.register((action) => {
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
+			if (
+				currentServerData.cryptoCoinSpark.length <
+				currentServerData.cryptoMarkets.length
+			) {
+				currentServerData.cryptoCoinSpark.push({
+					id: action.payload.id,
+					sparklines: action.payload.market_data.sparkline_7d.price
+				});
+			}
 			currentServerData.cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;

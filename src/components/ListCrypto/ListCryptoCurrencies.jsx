@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ListCrypto.css';
 import cryptoStore from '../../stores/crypto-store';
-import { loadCoinsAll } from '../../actions/action-creators';
+import { loadCoinsAll, loadCoinById } from '../../actions/action-creators';
 import CreateListItem from './CreateListItemCryptoCurrency';
 
 function ListCryptoCurrencies() {
@@ -42,6 +42,7 @@ function ListCryptoCurrencies() {
 					<tbody>
 						{cryptoList &&
 							cryptoList.map((data, index) => {
+								loadCoinById(data.id);
 								return <CreateListItem data={data} key={index} />;
 							})}
 					</tbody>
