@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 $bgColor: #141622;
 $navBgColor: #161619;
 $footerBgColor: #222531;
@@ -9,54 +7,6 @@ $mainTextColor: #fff;
 $secondaryTextColor: #c1c6c8;
 $negativeValue: #ea2e30;
 $positiveValue: #16c784;
-
-body {
-  font-family: "Inter", sans-serif;
-  background-color: $bgColor;
-  color: $mainTextColor;
-}
-
-a,
-a:active,
-a:visited {
-  color: $mainTextColor;
-  text-decoration: none;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
-.mainList {
-  display: flex;
-  flex-direction: column;
-}
-.listLegend {
-  margin-top: 2%;
-}
-#coinList {
-  border-radius: 20px;
-  background: #86e9dc;
-  height: 100%;
-  padding: 1%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#logo {
-  margin-left: 1%;
-  margin-right: 1%;
-}
-#textInList {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#textInEachComponent {
-  margin-left: 20%;
-}
-<<<<<<< HEAD
 
 .footer-container {
   .footer-subscribe {
@@ -81,6 +31,7 @@ a:visited {
       margin-bottom: 20px;
       height: 40px;
       #email {
+        color: $mainTextColor !important;
         height: 100%;
         padding-left: 15px;
         outline: none;
@@ -121,34 +72,3 @@ a:visited {
     color: black;
   }
 }
-
-.currencies-table {
-  overflow-x: scroll;
-  padding: 20px 0 20px 20px;
-  .table-headings {
-    text-align: left;
-  }
-  .table-container {
-    margin: 0 auto;
-    border-collapse: collapse;
-    .list-container > td {
-      cursor: pointer;
-      font-size: 110%;
-      padding: 20px 0;
-      border-bottom: 1px solid $secondaryTextColor;
-    }
-  }
-}
-
-.currencies-table::-webkit-scrollbar {
-  display: none;
-}
-@media screen and (max-width: 813px){
-  #cryptoList{
-    max-width: 600px;
-    min-width: 500px;
-
-  }
-}
-=======
->>>>>>> bcab5e600f83f23227dd54b84f2cba13d42aec5b

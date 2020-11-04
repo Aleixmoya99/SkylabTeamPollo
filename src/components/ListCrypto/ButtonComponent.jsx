@@ -1,8 +1,8 @@
 import React from "react";
 import cryptoStore from "../../stores/crypto-store";
 import { Checkbox } from "pretty-checkbox-react";
-import { loadCoinByID } from "../../actions/action-creators";
 import "@djthoms/pretty-checkbox";
+
 function ButtonSave({ data }) {
   return (
     <>

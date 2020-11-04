@@ -1,38 +1,43 @@
-import React from 'react';
-import './NavCrypto.css';
-import DropDown from './DropDown';
+import React from "react";
+import "./NavCrypto.css";
+import DropDown from "./DropDown";
+import InputSearch from "./InputSearch";
+import BtnSearch from "./BtnSearch";
+import BurgerMenu from "./BurgerMenu";
 
 function NavCrypto() {
-    let options = {
-        "Cryptocurrecies": null, 
-        "Products": {
-            "Where to buy": null, 
-            "Mobile Apps": null,
-            "Interest": null,
-            "Jobs Board": null,
-        },
-        "Learn": {
-            "Crypto basics": null, 
-            "How-to Guide": null,
-            "Glossary": null,
-            "FAQ": null
-        },
-        "Home": null,
-        "About": null,
-        "Log In": null
+  let options = {
+    Home: null,
+    Cryptocurrecies: null,
+    Products: {
+      "Where to buy": null,
+      "Mobile Apps": null,
+      Interest: null,
+      "Jobs Board": null,
+    },
+    Learn: {
+      "Crypto basics": null,
+      "How-to Guide": null,
+      Glossary: null,
+      FAQ: null,
+    },
 
-    }
+    About: null,
+    "Log In": null,
+  };
 
-    return (
-        <nav className="header">
+  let ulClass = "navbar-desktop";
 
-            <DropDown options = {options}/>
-	
-		</nav>
-    )
+  return (
+    <>
+      <div class="respmenu">
+        <DropDown options={options} ulClassName={ulClass} />
+        <BurgerMenu />
+        <BtnSearch />
+        <InputSearch />
+      </div>
+    </>
+  );
 }
 
-
-
-
-export default NavCrypto
+export default NavCrypto;
