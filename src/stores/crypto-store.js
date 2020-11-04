@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher/dispatcher';
 import actionTypes from '../actions/action-types';
-import { loadCoinsAll } from '../actions/action-creators';
 
 let savedCrypto, cryptoMarkets, cryptoCoin, cryptoDerivatives;
 
@@ -80,6 +79,7 @@ dispatcher.register((action) => {
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
+			debugger;
 			cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;

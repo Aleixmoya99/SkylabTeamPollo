@@ -83,4 +83,11 @@ describe('test crypto-store', () => {
 		dispatcher.dispatch(action);
 		expect(cryptoData).toBeTruthy();
 	});
+	test('Should return an element of an array by there id', () => {
+		const response = [1, 2, 3, 4];
+		const getSparklineInfo = (index) => {
+			return response[index];
+		};
+		expect(getSparklineInfo(2)).toEqual(3);
+	});
 });
