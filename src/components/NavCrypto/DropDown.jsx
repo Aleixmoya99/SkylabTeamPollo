@@ -1,5 +1,5 @@
-import React from "react";
-import "./DropDown.css";
+import React from 'react';
+import './DropDown.css';
 
 function DropDown({ options, ulClassName, liClassName }) {
 	let ulClass = ulClassName;
@@ -8,7 +8,7 @@ function DropDown({ options, ulClassName, liClassName }) {
 	return (
 		<>
 			<ul className={ulClass}>
-				{Object.keys(options).map((optionKey, index) => {
+				{Object.keys(options).map((optionKey) => {
 					let value = options[optionKey];
 					if (value === null) {
 						return (
