@@ -34,7 +34,7 @@ function ListCryptoCurrencies() {
 					<Switch
 						shape="slim"
 						color="info"
-						type="radio"
+						type="checkbox"
 						id="thisCheckBox"
 						data-testid="toggle"
 						onClick={() => {

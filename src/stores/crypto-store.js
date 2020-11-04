@@ -60,6 +60,54 @@ class CryptoData extends EventEmitter {
 			}
 		}
 	}
+	numFormatter(num) {
+		let val = 0;
+		//debugger;
+		if (num > 999) {
+			val = 1;
+		}
+		if (num > 1000000) {
+			val = 2;
+		}
+		if (num > 1000000000) {
+			val = 3;
+		}
+		if (num > 1000000000000) {
+			val = 4;
+		}
+		if (num > 1000000000000000) {
+			val = 5;
+		}
+		if (num > 1000000000000000000) {
+			val = 6;
+		}
+		if (num > 1000000000000000000000) {
+			val = 7;
+		}
+		if (num > 1000000000000000000000000) {
+			val = 8;
+		}
+		switch (val) {
+			case 1:
+				return (num / 1000).toFixed(0) + 'K ';
+			case 2:
+				return (num / 1000000).toFixed(0) + 'M ';
+			case 3:
+				return (num / 1000000000).toFixed(0) + 'B';
+			case 4:
+				return (num / 1000000000000).toFixed(0) + 'KB';
+			case 5:
+				return (num / 1000000000000000).toFixed(0) + 'MB';
+			case 6:
+				return (num / 1000000000000000000).toFixed(0) + 'BB';
+			case 7:
+				return (num / 1000000000000000000000).toFixed(0) + 'KBB';
+			case 8:
+				return (num / 1000000000000000000000000).toFixed(0) + 'MBB';
+			default:
+				return num;
+		}
+	}
 	getFavoritesCryptos() {
 		return savedCrypto;
 	}

@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   max-width: 10.5%;
-  margin-left: 7.5%;
+  margin-left: 10.5%;
 }
 
 .currencies-list .table-container {
@@ -35,5 +35,14 @@
 
 .currencies-list::-webkit-scrollbar {
   display: none;
+}
+@media screen and (max-width: 813px){
+  .listLegend{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 37%;
+    margin-left: 32%;
+  }
 }
 /*# sourceMappingURL=ListCrypto.css.map */
