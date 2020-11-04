@@ -142,3 +142,10 @@ a:visited {
 .currencies-table::-webkit-scrollbar {
   display: none;
 }
+@media screen and (max-width: 813px){
+  #cryptoList{
+    max-width: 600px;
+    min-width: 500px;
+
+  }
+}
