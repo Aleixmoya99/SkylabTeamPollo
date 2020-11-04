@@ -32,7 +32,7 @@ function ListCryptoCurrencies() {
 				<div className="listLegend">
 					Show Saved:
 					<Switch
-						shape="fill"
+						shape="slim"
 						color="primary"
 						type="checkBox"
 						id="thisCheckBox"
