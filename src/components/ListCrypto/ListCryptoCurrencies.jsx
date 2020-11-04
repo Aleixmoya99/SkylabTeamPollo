@@ -30,11 +30,11 @@ function ListCryptoCurrencies() {
 		<>
 			<div className="mainList">
 				<div className="listLegend">
-					Show Saved:
+					{'Show Saved '}
 					<Switch
-						shape="fill"
-						color="primary"
-						type="checkBox"
+						shape="slim"
+						color="info"
+						type="checkbox"
 						id="thisCheckBox"
 						data-testid="toggle"
 						onClick={() => {

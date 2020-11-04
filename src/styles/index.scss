@@ -56,3 +56,99 @@ a:visited {
 #textInEachComponent {
   margin-left: 20%;
 }
+<<<<<<< HEAD
+
+.footer-container {
+  .footer-subscribe {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: $footerBgColor;
+    .footer-message-text {
+      .footer-title {
+        margin-bottom: 20px;
+      }
+      .footer-title > span {
+        display: block;
+        font-size: 120%;
+      }
+      .footer-text {
+        margin-bottom: 30px;
+      }
+    }
+    .newsletter-inputs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      height: 40px;
+      #email {
+        height: 100%;
+        padding-left: 15px;
+        outline: none;
+        background-color: $footerBgColor !important;
+        border: 1px solid $secondaryTextColor;
+        border-radius: 8px;
+      }
+      #email:hover {
+        border: 1px solid $buttonColor;
+      }
+      .newsletter-button {
+        margin-left: 20px;
+        height: 100%;
+        padding: 0 15px;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        color: $mainTextColor;
+        font-weight: 600;
+        background-color: $buttonColor;
+      }
+      .newsletter-button:hover {
+        background-color: #486dfb;
+      }
+    }
+  }
+}
+.footer-links {
+  background-color: $bgColor;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-bottom: 20px;
+  .footer-link {
+    padding: 5px;
+  }
+  .footer-link:hover {
+    color: black;
+  }
+}
+
+.currencies-table {
+  overflow-x: scroll;
+  padding: 20px 0 20px 20px;
+  .table-headings {
+    text-align: left;
+  }
+  .table-container {
+    margin: 0 auto;
+    border-collapse: collapse;
+    .list-container > td {
+      cursor: pointer;
+      font-size: 110%;
+      padding: 20px 0;
+      border-bottom: 1px solid $secondaryTextColor;
+    }
+  }
+}
+
+.currencies-table::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 813px){
+  #cryptoList{
+    max-width: 600px;
+    min-width: 500px;
+
+  }
+}
+=======
+>>>>>>> bcab5e600f83f23227dd54b84f2cba13d42aec5b
