@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher/dispatcher';
 import actionTypes from '../actions/action-types';
-import { loadCoinsAll } from '../actions/action-creators';
 
 let savedCrypto, cryptoMarkets, cryptoCoin, cryptoDerivatives;
 
@@ -52,7 +51,6 @@ class CryptoData extends EventEmitter {
 		if (flag === 0) {
 			savedCrypto.push(data);
 		}
-		console.log(savedCrypto);
 	}
 	deleteSaveData(data) {
 		for (let i = 0; i < savedCrypto.length; i++) {
@@ -61,7 +59,6 @@ class CryptoData extends EventEmitter {
 				break;
 			}
 		}
-		console.log(savedCrypto);
 	}
 	getFavoritesCryptos() {
 		return savedCrypto;
