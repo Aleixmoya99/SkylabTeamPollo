@@ -6,6 +6,13 @@
   position: relative;
   margin: 0 100px;
 }
+.listLegend{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 10.5%;
+  margin-left: 7.5%;
+}
 
 .currencies-list .table-container {
   margin: 0 auto;
