@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import cryptoStore from '../../stores/crypto-store';
 import { loadDerivativesList } from '../../actions/action-creators';
 import './ListCrypto.css';
+import ButtonNextDerivatives from '../../components/ListCrypto/ButtonNextDerivatives';
 
 function ListCryptoDerivatives() {
 	const [derivativesList, setDerivativesList] = useState(
@@ -69,6 +70,7 @@ function ListCryptoDerivatives() {
 							)}
 						</tbody>
 					</table>
+					<ButtonNextDerivatives />
 				</div>
 			</div>
 		</>
