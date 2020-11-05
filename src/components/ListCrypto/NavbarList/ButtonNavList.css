@@ -1,0 +1,15 @@
+.buttonWatch {
+	background-color: rgb(210, 212, 214);
+	border-radius: 5px;
+	color: black;
+	padding: 5px;
+}
+.buttonWatch:hover {
+	background-color: rgb(136, 136, 136);
+}
+#favorites {
+	color: white;
+}
+#favorites:hover {
+	color: rgb(223, 223, 4);
+}

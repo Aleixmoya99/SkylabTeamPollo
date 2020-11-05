@@ -9,72 +9,30 @@ $negativeValue: #ea2e30;
 $positiveValue: #16c784;
 
 .currencies-list {
-	background-color: $footerBgColor;
-	padding: 20px 0 20px 20px;
-	border-radius: 10px;
-	overflow-x: scroll;
-	position: relative;
-	margin: 0 100px;
+  background-color: $footerBgColor;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  position: relative;
+  margin: 0 100px;
 
-	.table-container {
-		margin: 0 auto;
-		border-collapse: collapse;
-		.table-headings {
-			text-align: left;
-			th {
-				padding-top: 20px;
-				width: 180px;
-			}
-			.slim {
-				width: 80px;
-			}
-			#price {
-				width: 150px;
-			}
-			.fix-column {
-				position: absolute;
-			}
-		}
-		.list-container > td {
-			cursor: pointer;
-			padding: 20px 0;
-			border-bottom: 1px solid $secondaryTextColor;
-		}
-	}
+  .table-container {
+    margin: 0 auto;
+    border-collapse: collapse;
+    .table-headings {
+      text-align: left;
+      .fix-column {
+        position: absolute;
+      }
+    }
+    .list-container > td {
+      cursor: pointer;
+      padding: 20px 0;
+      border-bottom: 1px solid $secondaryTextColor;
+    }
+  }
 }
 
 .currencies-list::-webkit-scrollbar {
-	display: none;
-}
-
-.derivatives-list {
-	background-color: $footerBgColor;
-	padding: 20px 0 20px 20px;
-	border-radius: 10px;
-	overflow-x: scroll;
-	position: relative;
-	margin: 0 100px;
-
-	.table-container {
-		margin: 0 auto;
-		border-collapse: collapse;
-		.table-headings {
-			text-align: left;
-			th {
-				padding-top: 15px;
-				width: 230px;
-			}
-			.fix-column {
-				position: absolute;
-			}
-		}
-		.list-container > td {
-			cursor: pointer;
-			padding: 20px 0;
-			border-bottom: 1px solid $secondaryTextColor;
-		}
-		#logo {
-			padding: 10px;
-		}
-	}
+  display: none;
 }
