@@ -1,99 +1,110 @@
 .currencies-list {
-	background-color: #222531;
-	padding: 20px 0 20px 20px;
-	border-radius: 10px;
-	overflow-x: scroll;
-	position: relative;
-	margin: 0 100px;
-}
-.listLegend {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	max-width: 10.5%;
-	margin-left: 10.5%;
+  background-color: #222531;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  position: relative;
+  margin: 0 100px;
 }
 
 .currencies-list .table-container {
-	margin: 0 auto;
-	border-collapse: collapse;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
 
 .currencies-list .table-container .table-headings {
-	text-align: left;
+  text-align: left;
 }
 
 .currencies-list .table-container .table-headings th {
-	padding-top: 20px;
-	width: 180px;
+  padding-top: 20px;
+  width: 180px;
 }
 
 .currencies-list .table-container .table-headings .slim {
-	width: 80px;
+  width: 80px;
 }
 
 .currencies-list .table-container .table-headings #price {
-	width: 150px;
+  width: 150px;
 }
 
 .currencies-list .table-container .table-headings .fix-column {
-	position: absolute;
+  position: absolute;
 }
 
 .currencies-list .table-container .list-container > td {
-	cursor: pointer;
-	padding: 20px 0;
-	border-bottom: 1px solid #c1c6c8;
+  cursor: pointer;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c6c8;
 }
 
 .currencies-list::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 .derivatives-list {
-	background-color: #222531;
-	padding: 20px 0 20px 20px;
-	border-radius: 10px;
-	overflow-x: scroll;
-	position: relative;
-	margin: 0 100px;
+  background-color: #222531;
+  padding: 20px 0 20px 20px;
+  border-radius: 10px;
+  overflow-x: scroll;
+  position: relative;
+  margin: 0 100px;
 }
 
 .derivatives-list .table-container {
-	margin: 0 auto;
-	border-collapse: collapse;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
 
 .derivatives-list .table-container .table-headings {
-	text-align: left;
+  text-align: left;
 }
 
 .derivatives-list .table-container .table-headings th {
-	padding-top: 15px;
-	width: 230px;
+  padding-top: 15px;
+  width: 230px;
 }
 
 .derivatives-list .table-container .table-headings .fix-column {
-	position: absolute;
+  position: absolute;
 }
 
 .derivatives-list .table-container .list-container > td {
-	cursor: pointer;
-	padding: 20px 0;
-	border-bottom: 1px solid #c1c6c8;
+  cursor: pointer;
+  padding: 20px 0;
+  border-bottom: 1px solid #c1c6c8;
 }
 
 .derivatives-list .table-container #logo {
-	padding: 10px;
+  padding: 10px;
+}
+
+button {
+  font-size: 5px;
+  background-color: #2c2443;
+  color: white;
+}
+
+button:visited {
+  background-color: #2c2443;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#next-btn,
+#prev-btn {
+  font-size: 15px;
+}
+
+.numberPage {
+  padding-top: 5px;
 }
 /*# sourceMappingURL=ListCrypto.css.map */
-
-@media screen and (max-width: 813px) {
-	.listLegend {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		max-width: 37%;
-		margin-left: 32%;
-	}
-}
