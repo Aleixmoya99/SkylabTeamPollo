@@ -14,9 +14,9 @@ ReactDOM.render(
 		<BrowserRouter>
 			<NavCrypto />
 			<Switch>
-				<Route path="/" component={DetailCrypto} />
-				<Route path="/list" component={ListCrypto} />
-				<Route path="/listDerivatives" component={ListCryptoDerivatives} />
+				<Route path="/id" component={DetailCrypto} />
+				<Route path="/" component={ListCryptoDerivatives} />
+				<Route path="/" component={ListCrypto} />
 			</Switch>
 			<FooterCrypto />
 		</BrowserRouter>

@@ -63,13 +63,13 @@ function ListCryptoCurrencies() {
 						<thead className="table-headings">
 							<tr>
 								<th className="fix-column"></th>
-								<th>Rank</th>
-								<th></th>
+								<th className="slim">Rank</th>
+								<th className="slim"></th>
 								<th>Name</th>
 								<td>Sparkline</td>
-								<th>Price</th>
-								<th>24h</th>
-								<th>7d</th>
+								<th id="price">Price</th>
+								<th className="slim">24h</th>
+								<th className="slim">7d</th>
 								<th>Market Cap</th>
 								<th>Circulating Supply</th>
 							</tr>
