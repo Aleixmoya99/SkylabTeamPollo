@@ -2,7 +2,6 @@ import React from 'react';
 import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
 function GenerateSparkline({ currentSparkline }) {
-	debugger;
 	return (
 		<td key={currentSparkline.id}>
 			<Sparklines data={currentSparkline.sparklines}>

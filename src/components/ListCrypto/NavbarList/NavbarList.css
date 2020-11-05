@@ -1,0 +1,65 @@
+.buttonNavlist {
+	display: none;
+}
+#buttonWatchScreen {
+	display: flex;
+	color: white;
+}
+#buttonWatchScreen:hover {
+	color: rgb(223, 223, 4);
+}
+.navbarlist {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	margin: 10px;
+}
+.separate {
+	margin: 0px 15px;
+}
+
+.buttonNav {
+	margin: 0px 5px;
+}
+.buttonCrypto,
+.buttonDerivatives {
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	width: 100px;
+	font-size: 10px;
+}
+.buttonCrypto:hover,
+.buttonDerivatives:hover {
+	background-color: rgb(122, 182, 241);
+	font-weight: 500;
+}
+
+@media screen and (min-width: 600px) {
+	.buttonNavlist {
+		display: flex;
+	}
+	#buttonWatchScreen {
+		display: none;
+	}
+
+	.navbarlist {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
+		margin: 10px;
+	}
+
+	.buttonCrypto,
+	.buttonDerivatives {
+		width: 150px;
+		font-size: 15px;
+	}
+	.buttonCrypto:hover,
+	.buttonDerivatives:hover {
+		background-color: rgb(122, 182, 241);
+		font-weight: 500;
+	}
+}

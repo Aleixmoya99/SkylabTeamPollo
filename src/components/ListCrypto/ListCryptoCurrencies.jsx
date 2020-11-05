@@ -7,8 +7,6 @@ import CreateListItem from './CreateListItemCryptoCurrency';
 function ListCryptoCurrencies() {
 	const [cryptoList, setCryptoList] = useState(null);
 	const [currentSparklines, setCurrentSparkline] = useState(null);
-	const [display, setDisplay] = useState(null);
-
 	useEffect(() => {
 		function handleChange() {
 			cryptoList && setCurrentSparkline(cryptoStore.getSparklineArr());
@@ -27,8 +25,8 @@ function ListCryptoCurrencies() {
 		return () => {
 			cryptoStore.removeEventListener(handleChange);
 		};
-	}, [cryptoList, currentSparklines, display]);
-	debugger;
+	}, [cryptoList, currentSparklines]);
+
 	return (
 		<>
 			{cryptoList && currentSparklines && (

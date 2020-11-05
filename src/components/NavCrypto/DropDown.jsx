@@ -12,15 +12,15 @@ function DropDown({ options, ulClassName, liClassName, index }) {
 					let value = options[optionKey];
 					if (value === null) {
 						return (
-							<li className={liClass} key={index}>
-								<a href="*">{optionKey}</a>
+							<li className={liClass}>
+								<a href="cryptocurrencies">{optionKey}</a>
 							</li>
 						);
 					} else {
 						return (
 							<>
-								<li className={liClass} key={index}>
-									<a href="*">{optionKey}</a>
+								<li className={liClass}>
+									<a href="cryptocurrencies">{optionKey}</a>
 									<DropDown options={value} />
 								</li>
 							</>

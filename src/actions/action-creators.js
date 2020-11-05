@@ -64,3 +64,14 @@ export async function loadDerivativesList(show = 25, page = 0) {
 		payload: derivativesList
 	});
 }
+
+export async function changeList() {
+	dispatcher.dispatch({
+		type: actionTypes.CHANGE_LIST
+	});
+}
+export async function errorNoSavedCurrency() {
+	dispatcher.dispatch({
+		type: actionTypes.ERROR_NO_SAVEDCURRENCY
+	});
+}

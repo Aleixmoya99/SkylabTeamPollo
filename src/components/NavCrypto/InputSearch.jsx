@@ -4,10 +4,15 @@ import './InputSearch.css';
 function InputSearch() {
 	return (
 		<>
-			<form className="search-desktop">
-				<input type="text" placeholder="Search.." name="search2" />
+			<form class="search-desktop">
+				<input
+					type="text"
+					placeholder="Search.."
+					name="search2"
+					className="inputSearch"
+				/>
 				<button type="submit">
-					<em className="fa fa-search"></em>
+					<i class="fa fa-search"></i>
 				</button>
 			</form>
 		</>

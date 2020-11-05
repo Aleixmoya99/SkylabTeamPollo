@@ -6,20 +6,19 @@ function BurgerMenu() {
 	return (
 		<>
 			<input type="checkbox" />
-
-			<i className="material-icons burger-menu">menu</i>
-			<i className="material-icons burger-menu-open">menu_open</i>
+			<i class="material-icons burger-menu">menu</i>
+			<i class="material-icons burger-menu-open">menu_open</i>
 
 			<nav>
 				<ul>
 					<li>
-						<a href="*">Home</a>
+						<a href="cryptocurrency">Home</a>
 					</li>
 					<li>
-						<a href="*">Cryptocurrecies</a>
+						<a href="cryptocurrency">Cryptocurrecies</a>
 					</li>
 					<li>
-						<a href="*">Products</a>
+						<a href="cryptocurrency">Products</a>
 					</li>
 					<li>
 						<a href="*">Learn</a>
