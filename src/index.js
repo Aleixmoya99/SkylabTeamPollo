@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './styles/normalize.css';
 import './styles/index.css';
 import NavCrypto from './components/NavCrypto/NavCrypto';
-import ListCrypto from './components/ListCrypto/ListCryptoCurrencies';
 import ListCryptoDerivatives from './components/ListCrypto/ListCryptoDerivatives';
 import FooterCrypto from './components/FooterCrypto/FooterCrypto';
 import NavbarList from './components/ListCrypto/NavbarList/NavbarList';
