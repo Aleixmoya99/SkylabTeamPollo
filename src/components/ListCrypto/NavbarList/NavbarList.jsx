@@ -14,13 +14,13 @@ function NavbarList() {
 				<div className="separate">{' | '}</div>
 
 				<div className="buttonNav">
-					<Link to="/cryptocurrencies">
+					<a href="cryptocurrencies">
 						<input
 							type="button"
 							className="buttonCrypto"
 							value="Cryptocurrencies"
 						/>
-					</Link>
+					</a>
 				</div>
 				<div className="buttonNav">
 					<Link to="/derivatives">
