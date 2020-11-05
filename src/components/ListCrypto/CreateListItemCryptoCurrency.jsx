@@ -2,6 +2,7 @@ import React from 'react';
 import GenerateSparkline from './GenerateSparkline';
 
 function CreateListItemCryptoCurrency({ data, sparkline }) {
+	debugger;
 	return (
 		<tr className="list-container" key={data.id}>
 			<td></td>
