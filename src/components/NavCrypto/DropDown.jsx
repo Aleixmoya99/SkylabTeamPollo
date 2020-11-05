@@ -1,5 +1,5 @@
-import React from "react";
-import "./DropDown.css";
+import React from 'react';
+import './DropDown.css';
 
 function DropDown({ options, ulClassName, liClassName }) {
 	let ulClass = ulClassName;
@@ -13,14 +13,14 @@ function DropDown({ options, ulClassName, liClassName }) {
 					if (value === null) {
 						return (
 							<li className={liClass}>
-								<a href="*">{optionKey}</a>
+								<a href="cryptocurrencies">{optionKey}</a>
 							</li>
 						);
 					} else {
 						return (
 							<>
 								<li className={liClass}>
-									<a href="*">{optionKey}</a>
+									<a href="cryptocurrencies">{optionKey}</a>
 									<DropDown options={value} />
 								</li>
 							</>

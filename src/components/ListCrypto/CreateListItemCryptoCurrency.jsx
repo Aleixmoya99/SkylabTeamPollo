@@ -12,14 +12,20 @@ function CreateListItemCryptoCurrency({ data }) {
 				<MakeButtonSave data={data} />
 			</td>
 			<td>
-				<Link
-					to={`/cryptocurrencies/${data.id}`}
-				>{`${data.market_data.market_cap_rank}`}</Link>
+				<Link to={`/cryptocurrencies/${data.id}`}>
+					{`${data.market_data.market_cap_rank}`}
+				</Link>
 			</td>
 			<td>
-				<img src={data.image.thumb} alt="crypto-logo" />
+				<Link to={`/cryptocurrencies/${data.id}`}>
+					<img src={data.image.thumb} alt="crypto-logo" />
+				</Link>
 			</td>
-			<td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
+			<td>
+				<Link to={`/cryptocurrencies/${data.id}`}>
+					{`${data.name} ${data.symbol.toUpperCase()}`}
+				</Link>
+			</td>
 			<td></td>
 			<td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
 			<td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
@@ -30,9 +36,6 @@ function CreateListItemCryptoCurrency({ data }) {
 						data.market_data.market_cap.eur.toLocaleString().replaceAll('.', '')
 					)
 				)}`}
-				{console.log(
-					data.market_data.market_cap.eur.toLocaleString().replaceAll('.', '')
-				)}
 			</td>
 			<td>{`${cryptoStore.numFormatter(
 				parseFloat(

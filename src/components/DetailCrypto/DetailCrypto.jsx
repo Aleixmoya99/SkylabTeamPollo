@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import CryptoStore from '../../stores/crypto-store';
 import { loadCoinByID } from '../../actions/action-creators';
-function DetailCrypto() {
+import './DetailCrypto.css';
+function DetailCrypto({ match }) {
 	const [cryptoCoin, setCryptCoin] = useState(null);
+	const [coinId] = useState(+match.params.id);
 
 	function handleChange() {
 		setCryptCoin(CryptoStore.getCryptoCoin());
@@ -11,7 +13,7 @@ function DetailCrypto() {
 	useEffect(() => {
 		CryptoStore.addEventListener(handleChange);
 		if (!cryptoCoin) {
-			loadCoinByID('bitcoin');
+			loadCoinByID(match.params.id);
 		}
 		return () => {
 			CryptoStore.removeEventListener(handleChange);
@@ -22,49 +24,56 @@ function DetailCrypto() {
 		<>
 			{cryptoCoin ? (
 				<section>
-					<figure>
-						<img src={cryptoCoin.data.image.small} alt="crypto__logo" />
-						<figcaption>{cryptoCoin.data.name}</figcaption>
-						<span>{cryptoCoin.data.symbol}</span>
+					<figure class="presentation">
+						<img id="logo" src={cryptoCoin.image.small} alt="crypto__logo" />
+						<h1 class="presentationItem">{cryptoCoin.name}</h1>
+						<h1 class="presentationItem">{cryptoCoin.symbol}</h1>
 					</figure>
-					<div>
-						<span>
-							€ {cryptoCoin.data.market_data.current_price.eur}(
-							{cryptoCoin.data.market_data.price_change_percentage_24h.toFixed(
-								2
-							)}
+					<div class="firstRow">
+						<h2 class="presentationItem">Rank {cryptoCoin.coingecko_rank}</h2>
+						<h2 class="presentationItem">
+							Price(€): {cryptoCoin.market_data.current_price.eur}€(
+							{cryptoCoin.market_data.price_change_percentage_24h.toFixed(2)}
 							%)
-						</span>
-						<span>
-							$ {cryptoCoin.data.market_data.current_price.usd}(
-							{cryptoCoin.data.market_data.price_change_percentage_24h.toFixed(
-								2
-							)}
-							%)
-						</span>
+						</h2>
 					</div>
 					<div>
-						<ul>
-							<li>Rank {cryptoCoin.data.coingecko_rank}</li>
+						<ul class="secondRow">
 							<li>
-								<a href={cryptoCoin.data.links.homepage[0]}>Home Page</a>
-							</li>
-							<li>Change in 24H</li>
-							<li>Change in 30D</li>
-							<li>Change in 1Y</li>
-							<li>Social Media</li>
-							<li>Codigo fuente</li>
-							<li>
-								max_supply {cryptoCoin.data.market_data.total_supply} coins
+								Price($): {cryptoCoin.market_data.current_price.usd}(
+								{cryptoCoin.market_data.price_change_percentage_24h.toFixed(2)}
+								%)
 							</li>
 							<li>
-								circulating_supply{' '}
-								{cryptoCoin.data.market_data.circulating_supply} coins
+								Change in 24H(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_24h_in_currency
+										.eur
+								}
+							</li>
+							<li>
+								Change in 30D(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_30d_in_currency
+										.eur
+								}
+							</li>
+							<li>
+								Change in 1Y(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_1y_in_currency
+										.eur
+								}
+							</li>
+							<li>Max Supply {cryptoCoin.market_data.total_supply} coins</li>
+							<li>
+								Circulating Supply {cryptoCoin.market_data.circulating_supply}{' '}
+								Coins
 							</li>
 						</ul>
 					</div>
-
-					<div className="description">{cryptoCoin.data.description.en}</div>
+					<br />
+					<div className="description">{cryptoCoin.description.en}</div>
 				</section>
 			) : (
 				<div>Loading...</div>
