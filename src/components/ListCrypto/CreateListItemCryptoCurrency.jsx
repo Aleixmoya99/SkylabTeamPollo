@@ -17,12 +17,12 @@ function CreateListItemCryptoCurrency({ data, sparkline }) {
 				</Link>
 			</td>
 			<td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
-			<GenerateSparkline currentSparkline={sparkline} />
 			<td>
 				<Link to={`/cryptocurrencies/${data.id}`}>
 					<img src={data.image.thumb} alt="crypto-logo" />
 				</Link>
 			</td>
+			<GenerateSparkline currentSparkline={sparkline} />
 			<td>
 				<Link to={`/cryptocurrencies/${data.id}`}>
 					{`${data.name} ${data.symbol.toUpperCase()}`}

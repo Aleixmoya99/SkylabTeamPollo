@@ -14,7 +14,6 @@ function ListCryptoCurrencies() {
 		}
 		cryptoStore.addEventListener(handleChange);
 		cryptoList &&
-			!currentSparklines &&
 			(async () => {
 				await cryptoList.forEach((data) => loadCoinById(data.id));
 			})();
@@ -26,7 +25,6 @@ function ListCryptoCurrencies() {
 			cryptoStore.removeEventListener(handleChange);
 		};
 	}, [cryptoList, currentSparklines]);
-
 	return (
 		<>
 			{cryptoList && currentSparklines && (

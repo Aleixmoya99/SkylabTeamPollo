@@ -41,6 +41,7 @@ export async function loadCoinById(coinId) {
 			type: actionTypes.LOAD_CRYPTO_COIN_BY_ID,
 			payload: coinById.data
 		});
+		debugger;
 	} catch (error) {
 		dispatcher.dispatch({
 			type: actionTypes.LOADING_DATA_ERROR,
