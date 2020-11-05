@@ -2,6 +2,8 @@ import React from 'react';
 //import GenerateSparkline from './GenerateSparkline';
 import '@djthoms/pretty-checkbox';
 import MakeButtonSave from './ButtonComponent';
+import cryptoStore from './../../stores/crypto-store';
+import { Link } from 'react-router-dom';
 
 function CreateListItemCryptoCurrency({ data }) {
 	return (
@@ -9,7 +11,11 @@ function CreateListItemCryptoCurrency({ data }) {
 			<td>
 				<MakeButtonSave data={data} />
 			</td>
-			<td>{`${data.market_data.market_cap_rank}`}</td>
+			<td>
+				<Link
+					to={`/cryptocurrencies/${data.id}`}
+				>{`${data.market_data.market_cap_rank}`}</Link>
+			</td>
 			<td>
 				<img src={data.image.thumb} alt="crypto-logo" />
 			</td>
@@ -18,10 +24,23 @@ function CreateListItemCryptoCurrency({ data }) {
 			<td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
 			<td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
 			<td>{`${data.market_data.price_change_percentage_7d.toFixed(2)}`}</td>
-			<td>{`${data.market_data.market_cap.eur.toLocaleString()}`}</td>
-			<td>{`${Number(
-				data.market_data.circulating_supply
-			).toLocaleString()} ${data.symbol.toUpperCase()}`}</td>
+			<td>
+				{`${cryptoStore.numFormatter(
+					parseFloat(
+						data.market_data.market_cap.eur.toLocaleString().replaceAll('.', '')
+					)
+				)}`}
+				{console.log(
+					data.market_data.market_cap.eur.toLocaleString().replaceAll('.', '')
+				)}
+			</td>
+			<td>{`${cryptoStore.numFormatter(
+				parseFloat(
+					data.market_data.circulating_supply
+						.toLocaleString()
+						.replaceAll('.', '')
+				)
+			)} ${data.symbol.toUpperCase()}`}</td>
 		</tr>
 	);
 }

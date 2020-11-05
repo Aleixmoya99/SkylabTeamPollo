@@ -9,6 +9,7 @@ import ListCryptoDerivatives from './components/ListCrypto/ListCryptoDerivatives
 import FooterCrypto from './components/FooterCrypto/FooterCrypto';
 import NavbarList from './components/ListCrypto/NavbarList/NavbarList';
 import ListCryptoCurrencies from './components/ListCrypto/ListCryptoCurrencies';
+import DetailCrypto from './components/DetailCrypto/DetailCrypto';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.render(
 					exact
 					component={ListCryptoCurrencies}
 				/>
+				<Route path="/cryptocurrencies/:id" component={DetailCrypto} />
 				<Route path="/derivatives" exact component={ListCryptoDerivatives} />
 			</Switch>
 			<FooterCrypto />
