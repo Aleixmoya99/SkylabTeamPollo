@@ -1,77 +1,85 @@
-import React, { useEffect, useState } from "react";
-import CryptoStore from "../../stores/crypto-store";
-import { loadCoinByID } from "../../actions/action-creators";
-
+import React, { useEffect, useState } from 'react';
+import CryptoStore from '../../stores/crypto-store';
+import { loadCoinByID } from '../../actions/action-creators';
+import './DetailCrypto.css';
 function DetailCrypto() {
-  const [cryptoCoin, setCryptCoin] = useState(null);
+	const [cryptoCoin, setCryptCoin] = useState(null);
 
-  function handleChange() {
-    setCryptCoin(CryptoStore.getCryptoCoin());
-  }
+	function handleChange() {
+		setCryptCoin(CryptoStore.getCryptoCoin());
+	}
 
-  useEffect(() => {
-    CryptoStore.addEventListener(handleChange);
-    if (!cryptoCoin) {
-      loadCoinByID("bitcoin");
-    }
-    return () => {
-      CryptoStore.removeEventListener(handleChange);
-    };
-  }, [cryptoCoin]);
+	useEffect(() => {
+		CryptoStore.addEventListener(handleChange);
+		if (!cryptoCoin) {
+			loadCoinByID('bitcoin');
+		}
+		return () => {
+			CryptoStore.removeEventListener(handleChange);
+		};
+	}, [cryptoCoin]);
 
-  return (
-    <>
-      {cryptoCoin ? (
-        <section>
-          <figure>
-            <img src={cryptoCoin.data.image.small} alt="crypto__logo" />
-            <figcaption>{cryptoCoin.data.name}</figcaption>
-            <span>{cryptoCoin.data.symbol}</span>
-          </figure>
-          <div>
-            <span>
-              € {cryptoCoin.data.market_data.current_price.eur}(
-              {cryptoCoin.data.market_data.price_change_percentage_24h.toFixed(
-                2
-              )}
-              %)
-            </span>
-            <span>
-              $ {cryptoCoin.data.market_data.current_price.usd}(
-              {cryptoCoin.data.market_data.price_change_percentage_24h.toFixed(
-                2
-              )}
-              %)
-            </span>
-          </div>
-          <div>
-            <ul>
-              <li>Rank {cryptoCoin.data.coingecko_rank}</li>
-              <li>
-                <a href={cryptoCoin.data.links.homepage[0]}>Home Page</a>
-              </li>
-              <li>Change in 24H</li>
-              <li>Change in 30D</li>
-              <li>Change in 1Y</li>
-              <li>Social Media</li>
-              <li>Codigo fuente</li>
-              <li>
-                max_supply {cryptoCoin.data.market_data.total_supply} coins
-              </li>
-              <li>
-                circulating_supply{" "}
-                {cryptoCoin.data.market_data.circulating_supply} coins
-              </li>
-            </ul>
-          </div>
-
-          <div className="description">{cryptoCoin.data.description.en}</div>
-        </section>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </>
-  );
+	return (
+		<>
+			{cryptoCoin ? (
+				<section>
+					{console.log(cryptoCoin)}
+					<figure class="presentation">
+						<img id="logo" src={cryptoCoin.image.small} alt="crypto__logo" />
+						<h1 class="presentationItem">{cryptoCoin.name}</h1>
+						<h1 class="presentationItem">{cryptoCoin.symbol}</h1>
+					</figure>
+					<div class="firstRow">
+						<h2 class="presentationItem">Rank {cryptoCoin.coingecko_rank}</h2>
+						<h2 class="presentationItem">
+							Price(€): {cryptoCoin.market_data.current_price.eur}€(
+							{cryptoCoin.market_data.price_change_percentage_24h.toFixed(2)}
+							%)
+						</h2>
+					</div>
+					<div>
+						<ul class="secondRow">
+							<li>
+								Price($): {cryptoCoin.market_data.current_price.usd}(
+								{cryptoCoin.market_data.price_change_percentage_24h.toFixed(2)}
+								%)
+							</li>
+							<li>
+								Change in 24H(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_24h_in_currency
+										.eur
+								}
+							</li>
+							<li>
+								Change in 30D(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_30d_in_currency
+										.eur
+								}
+							</li>
+							<li>
+								Change in 1Y(€):{' '}
+								{
+									cryptoCoin.market_data.price_change_percentage_1y_in_currency
+										.eur
+								}
+							</li>
+							<li>Max Supply {cryptoCoin.market_data.total_supply} coins</li>
+							<li>
+								Circulating Supply {cryptoCoin.market_data.circulating_supply}{' '}
+								Coins
+							</li>
+						</ul>
+					</div>
+					<br />
+					<div className="description">{cryptoCoin.description.en}</div>
+				</section>
+			) : (
+				<div>Loading...</div>
+			)}
+		</>
+	);
 }
 
 export default DetailCrypto;

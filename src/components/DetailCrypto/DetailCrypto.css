@@ -1,0 +1,32 @@
+.presentation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 42%;
+}
+#logo{
+    max-height: 50px;
+}
+.presentationItem{
+    margin-top: 3%;
+    margin-left: 2%;
+}
+
+.firstRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
+.secondRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
