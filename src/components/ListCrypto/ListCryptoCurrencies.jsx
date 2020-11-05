@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import './ListCrypto.css';
 import cryptoStore from '../../stores/crypto-store';
-import { loadCoinsAll } from '../../actions/action-creators';
+import { loadCoinsAll, loadCoinById } from '../../actions/action-creators';
 import CreateListItem from './CreateListItemCryptoCurrency';
-import '@djthoms/pretty-checkbox';
 
 function ListCryptoCurrencies() {
-	const [cryptoList, setCryptoList] = useState(cryptoStore.getCryptoList());
-
-	function handleChange() {
-		setCryptoList(cryptoStore.getCryptoList());
-	}
+	const [cryptoList, setCryptoList] = useState(null);
+	const [currentSparklines, setCurrentSparkline] = useState(null);
 	useEffect(() => {
-		cryptoStore.addEventListener(handleChange);
-		if (!cryptoList) {
-			loadCoinsAll();
+		function handleChange() {
+			cryptoList && setCurrentSparkline(cryptoStore.getSparklineArr());
+			!cryptoList && setCryptoList(cryptoStore.getCryptoList());
 		}
+		cryptoStore.addEventListener(handleChange);
+		cryptoList &&
+			!currentSparklines &&
+			(async () => {
+				await cryptoList.forEach((data) => loadCoinById(data.id));
+			})();
+		!cryptoList &&
+			(async () => {
+				await loadCoinsAll();
+			})();
 		return () => {
 			cryptoStore.removeEventListener(handleChange);
 		};
-	}, [cryptoList]);
+	}, [cryptoList, currentSparklines]);
 
 	return (
 		<>
-			<div>
+			{cryptoList && currentSparklines && (
 				<section className="currencies-list">
 					<table className="table-container">
 						<caption>Crypto Currencies</caption>
@@ -33,7 +39,7 @@ function ListCryptoCurrencies() {
 								<th>Rank</th>
 								<th></th>
 								<th>Name</th>
-								<td>Sparkline</td>
+								<td>........................................</td>
 								<th>Price</th>
 								<th>24h</th>
 								<th>7d</th>
@@ -42,14 +48,20 @@ function ListCryptoCurrencies() {
 							</tr>
 						</thead>
 						<tbody>
-							{cryptoList &&
+							{currentSparklines.length === cryptoList.length &&
 								cryptoList.map((data, index) => {
-									return <CreateListItem data={data} key={index} />;
+									return (
+										<CreateListItem
+											data={data}
+											sparkline={currentSparklines[index]}
+											key={index}
+										/>
+									);
 								})}
 						</tbody>
 					</table>
 				</section>
-			</div>
+			)}
 		</>
 	);
 }

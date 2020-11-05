@@ -1,36 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { loadCoinByID } from "../../actions/action-creators";
-import cryptoStore from "../../stores/crypto-store";
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import React from 'react';
+import { Sparklines, SparklinesLine, SparklinesSpots } from 'react-sparklines';
 
-function GenerateSparkline({ coinId }) {
-  const [coinSparklines, setCoinSparklines] = useState(
-    cryptoStore.getCryptoCoin()
-  );
-
-  function handleChange() {
-    setCoinSparklines(cryptoStore.getCryptoCoin());
-  }
-
-  useEffect(() => {
-    cryptoStore.addEventListener(handleChange);
-    if (!coinSparklines) {
-      loadCoinByID(coinId);
-    }
-    return () => {
-      cryptoStore.removeEventListener(handleChange);
-    };
-  }, [coinSparklines]);
-
-  return (
-    <div>
-      {coinSparklines && (
-        <Sparklines data={coinSparklines.market_data.sparkline_7d.price}>
-          <SparklinesLine color="white" />
-        </Sparklines>
-      )}
-    </div>
-  );
+function GenerateSparkline({ currentSparkline }) {
+	return (
+		<td key={currentSparkline.id}>
+			<Sparklines data={currentSparkline.sparklines}>
+				<SparklinesLine
+					style={{ fill: 'none' }}
+					color="blue"
+					limit={167}
+					width={100}
+					margin={1}
+				/>
+				<SparklinesSpots />
+			</Sparklines>
+		</td>
+	);
 }
 
 export default GenerateSparkline;
+
+// currentCoinSparklineData.market_data.sparkline_7d.price

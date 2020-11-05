@@ -1,13 +1,13 @@
 import React from 'react';
-//import GenerateSparkline from './GenerateSparkline';
+import GenerateSparkline from './GenerateSparkline';
 import '@djthoms/pretty-checkbox';
 import MakeButtonSave from './ButtonComponent';
 import cryptoStore from './../../stores/crypto-store';
 import { Link } from 'react-router-dom';
 
-function CreateListItemCryptoCurrency({ data }) {
+function CreateListItemCryptoCurrency({ data, sparkline }) {
 	return (
-		<tr className="list-container">
+		<tr className="list-container" key={data.id}>
 			<td>
 				<MakeButtonSave data={data} />
 			</td>
@@ -16,6 +16,8 @@ function CreateListItemCryptoCurrency({ data }) {
 					{`${data.market_data.market_cap_rank}`}
 				</Link>
 			</td>
+			<td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
+			<GenerateSparkline currentSparkline={sparkline} />
 			<td>
 				<Link to={`/cryptocurrencies/${data.id}`}>
 					<img src={data.image.thumb} alt="crypto-logo" />

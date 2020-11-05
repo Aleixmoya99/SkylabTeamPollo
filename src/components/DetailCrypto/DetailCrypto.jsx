@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CryptoStore from '../../stores/crypto-store';
-import { loadCoinByID } from '../../actions/action-creators';
+import { loadCoinById } from '../../actions/action-creators';
 import './DetailCrypto.css';
 function DetailCrypto({ match }) {
 	const [cryptoCoin, setCryptCoin] = useState(null);
@@ -13,7 +13,7 @@ function DetailCrypto({ match }) {
 	useEffect(() => {
 		CryptoStore.addEventListener(handleChange);
 		if (!cryptoCoin) {
-			loadCoinByID(match.params.id);
+			loadCoinById(match.params.id);
 		}
 		return () => {
 			CryptoStore.removeEventListener(handleChange);

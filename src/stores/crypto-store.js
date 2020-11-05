@@ -2,34 +2,39 @@ import { EventEmitter } from 'events';
 import dispatcher from '../dispatcher/dispatcher';
 import actionTypes from '../actions/action-types';
 
-let savedCrypto, cryptoMarkets, cryptoCoin, cryptoDerivatives;
-
 const CHANGE = 'CHANGE';
 
+const currentServerData = {
+	cryptoMarkets: null,
+	cryptoCoin: null,
+	cryptoDerivatives: null,
+	cryptoCoinSpark: [],
+	savedCrypto: null
+};
+
 class CryptoData extends EventEmitter {
+	getSparklineArr() {
+		return currentServerData.cryptoCoinSpark;
+	}
+
 	getCryptoList() {
-		return cryptoMarkets;
+		return currentServerData.cryptoMarkets;
 	}
 	setCryptoList(param) {
-		cryptoMarkets = param;
+		currentServerData.cryptoMarkets = param;
 	}
 	getCryptoCoin() {
-		return cryptoCoin;
+		return currentServerData.cryptoCoin;
 	}
 	setCryptoCoin(param) {
-		cryptoCoin = param;
+		currentServerData.cryptoCoin = param;
 	}
-	getSavedCrypto() {
-		return savedCrypto;
-	}
-	setSavedCrypto(param) {
-		savedCrypto = param;
-	}
+
 	getCryptoDerivatives() {
-		return cryptoDerivatives;
+		return currentServerData.cryptoDerivatives;
 	}
 	setCryptoDerivatives(param) {
-		cryptoDerivatives = param;
+		currentServerData.cryptoDerivatives = param;
 	}
 	addEventListener(callback) {
 		this.on(CHANGE, callback);
@@ -44,7 +49,6 @@ class CryptoData extends EventEmitter {
 	}
 	numFormatter(num) {
 		let val = 0;
-		//debugger;
 		if (num > 999) {
 			val = 1;
 		}
@@ -92,27 +96,27 @@ class CryptoData extends EventEmitter {
 	}
 	saveCrypto(data) {
 		let flag = 0;
-		!savedCrypto && (savedCrypto = []);
-		savedCrypto.forEach((element) => {
+		!currentServerData.savedCrypto && (currentServerData.savedCrypto = []);
+		currentServerData.savedCrypto.forEach((element) => {
 			element.id === data.id && (flag = 1);
 		});
 		if (flag === 0) {
-			savedCrypto.push(data);
+			currentServerData.savedCrypto.push(data);
 		}
 	}
 	deleteSaveData(data) {
-		for (let i = 0; i < savedCrypto.length; i++) {
-			if (savedCrypto[i].id === data.id) {
-				savedCrypto.splice(i, 1);
+		for (let i = 0; i < currentServerData.savedCrypto.length; i++) {
+			if (currentServerData.savedCrypto[i].id === data.id) {
+				currentServerData.savedCrypto.splice(i, 1);
 				break;
 			}
 		}
 	}
 	getFavoritesCryptos() {
-		return savedCrypto;
+		return currentServerData.savedCrypto;
 	}
 	setFavoritesCryptos(params) {
-		savedCrypto = params;
+		currentServerData.savedCrypto = params;
 	}
 }
 
@@ -121,23 +125,23 @@ const cryptoData = new CryptoData();
 dispatcher.register((action) => {
 	switch (action.type) {
 		case actionTypes.LOAD_CRYPTO_COIN_LIST:
-			cryptoMarkets = action.payload;
+			currentServerData.cryptoMarkets = action.payload;
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_CRYPTO_COIN_BY_ID:
-			cryptoCoin = action.payload;
+			if (
+				currentServerData.cryptoCoinSpark.length <
+				currentServerData.cryptoMarkets.length
+			)
+				currentServerData.cryptoCoinSpark.push({
+					id: action.payload.id,
+					sparklines: action.payload.market_data.sparkline_7d.price
+				});
+			currentServerData.cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;
 		case actionTypes.LOAD_DERIVATIVES_LIST:
-			cryptoDerivatives = action.payload;
-			cryptoData.emitChange();
-			break;
-		case actionTypes.CHANGE_LIST:
-			cryptoMarkets = savedCrypto;
-			cryptoData.emitChange();
-			break;
-		case actionTypes.ERROR_NO_SAVEDCURRENCY:
-			cryptoMarkets = [];
+			currentServerData.cryptoDerivatives = action.payload;
 			cryptoData.emitChange();
 			break;
 		default:
