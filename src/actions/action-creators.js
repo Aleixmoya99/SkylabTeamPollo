@@ -4,7 +4,7 @@ import CoinGecko from 'coingecko-api';
 
 const coinGeckoClient = new CoinGecko();
 
-export async function loadCoinsAll(show = 5, curPage = 0) {
+export async function loadCoinsAll(show = 25, curPage = 0) {
 	//Return array with 25 coins global information
 	// including market info
 	try {

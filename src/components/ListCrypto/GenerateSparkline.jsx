@@ -1,18 +1,18 @@
 import React from 'react';
-import cryptoStore from '../../stores/crypto-store';
-import { Sparklines } from 'react-sparklines';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
 
-function GenerateSparkline({ coinId }) {
-	debugger;
+function GenerateSparkline({ currentSparkline }) {
 	return (
-		<td>
+		<td key={currentSparkline.id}>
 			<Sparklines
-				data={cryptoStore.getSparklineData(coinId)}
-				limit={5}
+				data={currentSparkline.sparklines}
+				limit={167}
 				width={100}
-				height={20}
-				margin={5}
-			></Sparklines>
+				height={50}
+				margin={1}
+			>
+				<SparklinesLine color="blue" />
+			</Sparklines>
 		</td>
 	);
 }

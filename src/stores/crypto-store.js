@@ -12,12 +12,8 @@ const currentServerData = {
 };
 
 class CryptoData extends EventEmitter {
-	getSparklineData(currentId) {
-		debugger;
-		let currentSparkline = currentServerData.cryptoCoinSpark.indexOf((data) => {
-			return data.id === currentId;
-		});
-		return currentServerData.cryptoCoinSpark[currentSparkline].sparklines;
+	getSparklineArr() {
+		return currentServerData.cryptoCoinSpark;
 	}
 
 	getCryptoList() {
@@ -64,12 +60,11 @@ dispatcher.register((action) => {
 			if (
 				currentServerData.cryptoCoinSpark.length <
 				currentServerData.cryptoMarkets.length
-			) {
+			)
 				currentServerData.cryptoCoinSpark.push({
 					id: action.payload.id,
 					sparklines: action.payload.market_data.sparkline_7d.price
 				});
-			}
 			currentServerData.cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;
