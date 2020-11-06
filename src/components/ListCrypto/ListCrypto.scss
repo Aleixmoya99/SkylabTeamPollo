@@ -22,6 +22,10 @@ $positiveValue: #16c784;
 			th {
 				padding-top: 20px;
 				width: 180px;
+				text-align: center;
+			}
+			.table-sparkline {
+				width: 400px;
 			}
 			.slim {
 				width: 80px;
@@ -40,6 +44,11 @@ $positiveValue: #16c784;
 		}
 	}
 }
+
+.table-cols {
+	text-align: center;
+}
+
 .currencies-list::-webkit-scrollbar {
 	display: none;
 }

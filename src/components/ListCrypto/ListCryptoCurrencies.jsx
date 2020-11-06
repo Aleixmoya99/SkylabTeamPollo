@@ -7,15 +7,17 @@ import CreateListItem from './CreateListItemCryptoCurrency';
 function ListCryptoCurrencies() {
 	const [cryptoList, setCryptoList] = useState(null);
 	const [currentSparklines, setCurrentSparkline] = useState(null);
+
+	function handleChange() {
+		setCurrentSparkline(cryptoStore.getSparklineArr());
+		setCryptoList(cryptoStore.getCryptoList());
+	}
+
 	useEffect(() => {
-		function handleChange() {
-			cryptoList && setCurrentSparkline(cryptoStore.getSparklineArr());
-			!cryptoList && setCryptoList(cryptoStore.getCryptoList());
-		}
 		cryptoStore.addEventListener(handleChange);
 		cryptoList &&
 			(async () => {
-				await cryptoList.forEach((data) => loadCoinById(data.id));
+				await cryptoList.forEach(async (data) => await loadCoinById(data.id));
 			})();
 		!cryptoList &&
 			(async () => {
@@ -25,6 +27,7 @@ function ListCryptoCurrencies() {
 			cryptoStore.removeEventListener(handleChange);
 		};
 	}, [cryptoList, currentSparklines]);
+
 	return (
 		<>
 			{cryptoList && currentSparklines && (
@@ -33,11 +36,11 @@ function ListCryptoCurrencies() {
 						<caption>Crypto Currencies</caption>
 						<thead className="table-headings">
 							<tr>
-								<th className="fix-column"></th>
-								<th>Rank</th>
 								<th></th>
+								<th>Rank</th>
 								<th>Name</th>
-								<td>........................................</td>
+								<th></th>
+								<th className="table-sparkline">Last 7 Days</th>
 								<th>Price</th>
 								<th>24h</th>
 								<th>7d</th>
@@ -45,7 +48,7 @@ function ListCryptoCurrencies() {
 								<th>Circulating Supply</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody className="table-cols">
 							{currentSparklines.length === cryptoList.length &&
 								cryptoList.map((data, index) => {
 									return (
@@ -56,6 +59,7 @@ function ListCryptoCurrencies() {
 										/>
 									);
 								})}
+								
 						</tbody>
 					</table>
 				</section>

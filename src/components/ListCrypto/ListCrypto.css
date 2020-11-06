@@ -19,6 +19,11 @@
 .currencies-list .table-container .table-headings th {
   padding-top: 20px;
   width: 180px;
+  text-align: center;
+}
+
+.currencies-list .table-container .table-headings .table-sparkline {
+  width: 400px;
 }
 
 .currencies-list .table-container .table-headings .slim {
@@ -37,6 +42,10 @@
   cursor: pointer;
   padding: 20px 0;
   border-bottom: 1px solid #c1c6c8;
+}
+
+.table-cols {
+  text-align: center;
 }
 
 .currencies-list::-webkit-scrollbar {
