@@ -5,13 +5,7 @@ function GenerateSparkline({ currentSparkline }) {
 	return (
 		<td key={currentSparkline.id}>
 			<Sparklines data={currentSparkline.sparklines}>
-				<SparklinesLine
-					style={{ fill: 'none' }}
-					color="blue"
-					limit={167}
-					width={100}
-					margin={1}
-				/>
+				<SparklinesLine style={{ fill: 'none' }} color="green" limit={150} />
 				<SparklinesSpots />
 			</Sparklines>
 		</td>

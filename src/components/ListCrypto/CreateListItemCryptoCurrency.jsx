@@ -16,19 +16,16 @@ function CreateListItemCryptoCurrency({ data, sparkline }) {
 					{`${data.market_data.market_cap_rank}`}
 				</Link>
 			</td>
-			<td>{`${data.name} ${data.symbol.toUpperCase()}`}</td>
-			<GenerateSparkline currentSparkline={sparkline} />
-			<td>
-				<Link to={`/cryptocurrencies/${data.id}`}>
-					<img src={data.image.thumb} alt="crypto-logo" />
-				</Link>
-			</td>
 			<td>
 				<Link to={`/cryptocurrencies/${data.id}`}>
 					{`${data.name} ${data.symbol.toUpperCase()}`}
 				</Link>
 			</td>
-			<td></td>
+			<td>
+				<Link to={`/cryptocurrencies/${data.id}`}>
+					<img src={data.image.thumb} alt="crypto-logo" />
+				</Link>
+			</td>
 			<td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
 			<td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
 			<td>{`${data.market_data.price_change_percentage_7d.toFixed(2)}`}</td>
