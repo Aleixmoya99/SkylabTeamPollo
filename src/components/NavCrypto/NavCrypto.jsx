@@ -4,11 +4,7 @@ import DropDown from './DropDown';
 import InputSearch from './InputSearch';
 import BtnSearch from './BtnSearch';
 import BurgerMenu from './BurgerMenu';
-import {
-	signOut,
-	signInWithEmail,
-	signInWithGoogle
-} from '../../actions/auth-actions';
+import { signOut, signInWithGoogle } from '../../actions/auth-actions';
 import authStore from '../../stores/auth_store';
 
 function NavCrypto() {
@@ -29,32 +25,25 @@ function NavCrypto() {
 	function getSignInButtons() {
 		return (
 			<>
-				<button
-					type="button"
-					onClick={(event) => {
-						event.preventDefault();
-						signInWithEmail('deadsoulgamer@gmail.com', '1234567');
-					}}
-				>
-					Email/Password
-				</button>
-				{' | '}
-				<button
-					type="button"
-					onClick={(event) => {
-						event.preventDefault();
-						signInWithGoogle();
-					}}
-				>
-					Google
-				</button>
-				;
+				<div className="ButtonsLog">
+					<button
+						className="loginButton"
+						type="button"
+						onClick={(event) => {
+							event.preventDefault();
+							signInWithGoogle();
+						}}
+					>
+						Login
+					</button>
+				</div>
 			</>
 		);
 	}
 	function isSignInVisible() {
 		return user ? (
 			<button
+				className="signOutButton"
 				type="button"
 				onClick={(event) => {
 					event.preventDefault();
@@ -84,8 +73,7 @@ function NavCrypto() {
 			FAQ: null
 		},
 
-		About: null,
-		'Log In': null
+		About: null
 	};
 
 	let ulClass = 'navbar-desktop';
@@ -94,14 +82,11 @@ function NavCrypto() {
 			<div className="respmenu">
 				<DropDown options={options} ulClassName={ulClass} />
 				<BurgerMenu />
-				{isSignInVisible()}
-				{user && (
-					<span>
-						{' | '}
-						Welcome {user.email}
-					</span>
-				)}
 				<BtnSearch />
+
+				{isSignInVisible()}
+				{user && <span className="wellcome">Welcome {user.displayName}</span>}
+
 				<InputSearch />
 			</div>
 		</>

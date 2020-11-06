@@ -32,7 +32,8 @@
 }
 .buttonCrypto:hover,
 .buttonDerivatives:hover {
-	background-color: rgb(122, 182, 241);
+	background-color: rgb(122, 223, 241);
+
 	font-weight: 500;
 }
 
@@ -59,7 +60,8 @@
 	}
 	.buttonCrypto:hover,
 	.buttonDerivatives:hover {
-		background-color: rgb(122, 182, 241);
+		background-color: rgb(122, 223, 241);
+
 		font-weight: 500;
 	}
 }
