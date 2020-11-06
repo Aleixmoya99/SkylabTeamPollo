@@ -132,11 +132,12 @@ dispatcher.register((action) => {
 			if (
 				currentServerData.cryptoCoinSpark.length <
 				currentServerData.cryptoMarkets.length
-			)
+			) {
 				currentServerData.cryptoCoinSpark.push({
 					id: action.payload.id,
 					sparklines: action.payload.market_data.sparkline_7d.price
 				});
+			}
 			currentServerData.cryptoCoin = action.payload;
 			cryptoData.emitChange();
 			break;

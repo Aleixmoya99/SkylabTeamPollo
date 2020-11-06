@@ -6,40 +6,31 @@ import CreateListItem from './CreateListItemCryptoCurrency';
 
 function ListCryptoCurrencies() {
 	const [cryptoList, setCryptoList] = useState(null);
-	const [currentSparklines, setCurrentSparkline] = useState(null);
+
+	function handleChange() {
+		setCryptoList(cryptoStore.getCryptoList());
+	}
+
 	useEffect(() => {
-		function handleChange() {
-			cryptoList && setCurrentSparkline(cryptoStore.getSparklineArr());
-			!cryptoList && setCryptoList(cryptoStore.getCryptoList());
-		}
 		cryptoStore.addEventListener(handleChange);
-		cryptoList &&
-			!currentSparklines &&
-			(async () => {
-				await cryptoList.forEach((data) => loadCoinById(data.id));
-			})();
-		!cryptoList &&
-			(async () => {
-				await loadCoinsAll();
-			})();
+		!cryptoList && loadCoinsAll();
 		return () => {
 			cryptoStore.removeEventListener(handleChange);
 		};
-	}, [cryptoList, currentSparklines]);
+	}, [cryptoList]);
 
 	return (
 		<>
-			{cryptoList && currentSparklines && (
+			{cryptoList && (
 				<section className="currencies-list">
 					<table className="table-container">
 						<caption>Crypto Currencies</caption>
 						<thead className="table-headings">
 							<tr>
-								<th className="fix-column"></th>
-								<th>Rank</th>
 								<th></th>
+								<th>Rank</th>
 								<th>Name</th>
-								<td>........................................</td>
+								<th></th>
 								<th>Price</th>
 								<th>24h</th>
 								<th>7d</th>
@@ -47,15 +38,11 @@ function ListCryptoCurrencies() {
 								<th>Circulating Supply</th>
 							</tr>
 						</thead>
-						<tbody>
-							{currentSparklines.length === cryptoList.length &&
+						<tbody className="table-cols">
+							{cryptoList.length &&
 								cryptoList.map((data, index) => {
 									return (
-										<CreateListItem
-											data={data}
-											sparkline={currentSparklines[index]}
-											key={index}
-										/>
+										<CreateListItem data={data} sparkline={index} key={index} />
 									);
 								})}
 						</tbody>
