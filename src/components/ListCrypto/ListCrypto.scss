@@ -82,3 +82,25 @@ $positiveValue: #16c784;
 		}
 	}
 }
+
+button {
+	font-size: 5px;
+	background-color: #2c2443;
+	color: white;
+}
+
+button:visited {
+	background-color: #2c2443;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+}
+#next-btn,
+#prev-btn {
+	font-size: 15px;
+}
+.numberPage {
+	padding-top: 5px;
+}

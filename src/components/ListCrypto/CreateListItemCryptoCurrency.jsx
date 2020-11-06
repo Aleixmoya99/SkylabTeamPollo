@@ -26,7 +26,6 @@ function CreateListItemCryptoCurrency({ data, sparkline }) {
 					<img src={data.image.thumb} alt="crypto-logo" />
 				</Link>
 			</td>
-			<GenerateSparkline currentSparkline={sparkline} />
 			<td>{`${data.market_data.current_price.eur.toLocaleString()}€`}</td>
 			<td>{`${data.market_data.price_change_percentage_24h.toFixed(2)}`}</td>
 			<td>{`${data.market_data.price_change_percentage_7d.toFixed(2)}`}</td>

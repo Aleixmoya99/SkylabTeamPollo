@@ -88,4 +88,32 @@
 .derivatives-list .table-container #logo {
   padding: 10px;
 }
+
+button {
+  font-size: 5px;
+  background-color: #2c2443;
+  color: white;
+}
+
+button:visited {
+  background-color: #2c2443;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#next-btn,
+#prev-btn {
+  font-size: 15px;
+}
+
+.numberPage {
+  padding-top: 5px;
+}
 /*# sourceMappingURL=ListCrypto.css.map */

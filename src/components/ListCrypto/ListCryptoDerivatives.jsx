@@ -3,12 +3,33 @@ import cryptoStore from '../../stores/crypto-store';
 import { loadDerivativesList } from '../../actions/action-creators';
 import './ListCrypto.css';
 function ListCryptoDerivatives() {
+	let [currentPage, setCurrentPage] = useState(1);
+
 	const [derivativesList, setDerivativesList] = useState(
 		cryptoStore.getCryptoDerivatives()
 	);
 	function handleChange() {
 		setDerivativesList(cryptoStore.getCryptoDerivatives());
 	}
+
+	function nextPage() {
+		if (currentPage < 3) {
+			cryptoStore.addEventListener(handleChange);
+			loadDerivativesList(20, currentPage + 1);
+			cryptoStore.removeEventListener(handleChange);
+			setCurrentPage(currentPage + 1);
+		}
+	}
+
+	function prevPage() {
+		if (currentPage > 1) {
+			cryptoStore.addEventListener(handleChange);
+			loadDerivativesList(20, currentPage - 1);
+			cryptoStore.removeEventListener(handleChange);
+			setCurrentPage(currentPage - 1);
+		}
+	}
+
 	useEffect(() => {
 		cryptoStore.addEventListener(handleChange);
 		if (!derivativesList) {
@@ -59,10 +80,32 @@ function ListCryptoDerivatives() {
 									);
 								})
 							) : (
-								<td>Loading</td>
+								<tr>
+									<td>Loading</td>
+								</tr>
 							)}
 						</tbody>
 					</table>
+					{derivativesList ? (
+						<>
+							<br />
+							<div className="buttons">
+								<button type="button" onClick={() => prevPage()}>
+									<span class="material-icons" id="prev-btn">
+										navigate_before
+									</span>
+								</button>
+								<span className="numberPage">- {currentPage} - </span>
+								<button type="button" onClick={() => nextPage()}>
+									<span class="material-icons" id="next-btn">
+										navigate_next
+									</span>
+								</button>
+							</div>
+						</>
+					) : (
+						<></>
+					)}
 				</div>
 			</div>
 		</>
