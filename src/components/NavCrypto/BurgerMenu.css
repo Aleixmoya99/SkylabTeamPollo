@@ -56,9 +56,18 @@
 .respmenu input:not(:checked) ~ .burger-menu-open {
 	display: none;
 }
+.ButtonsLog {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
 
 @media screen and (min-width: 600px) {
 	.respmenu input[type='checkbox'] {
 		display: none;
+	}
+	.ButtonsLog {
+		display: flex;
 	}
 }

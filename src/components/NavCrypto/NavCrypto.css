@@ -82,8 +82,38 @@ ul {
 .search-desktop {
 	display: none;
 }
+.loginButton,
+.signOutButton {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	width: 70px;
+	height: 25px;
+	border-radius: 3px;
+	margin-right: 10px;
+	font-size: 12px;
+}
 
+.loginButton:hover,
+.signOutButton:hover {
+	background-color: rgb(122, 223, 241);
+	font-weight: 500;
+}
+
+.wellcome {
+	display: none;
+	font-size: 12px;
+	margin-left: 5px;
+}
 @media screen and (min-width: 600px) {
+	.wellcome {
+		display: flex;
+	}
+	.loginButton,
+	.signOutButton {
+		display: flex;
+	}
 	.navbar-desktop > li {
 		float: left;
 	}

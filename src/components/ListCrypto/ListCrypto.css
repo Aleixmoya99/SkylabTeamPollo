@@ -4,7 +4,7 @@
   border-radius: 10px;
   overflow-x: scroll;
   position: relative;
-  margin: 0 100px;
+  margin: 0 20px;
 }
 
 .currencies-list .table-container {
@@ -49,7 +49,7 @@
   border-radius: 10px;
   overflow-x: scroll;
   position: relative;
-  margin: 0 100px;
+  margin: 0 20px;
 }
 
 .derivatives-list .table-container {
@@ -78,5 +78,14 @@
 
 .derivatives-list .table-container #logo {
   padding: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .currencies-list {
+    margin: 0 100px;
+  }
+  .derivatives-list {
+    margin: 0 100px;
+  }
 }
 /*# sourceMappingURL=ListCrypto.css.map */
